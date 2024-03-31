@@ -1,3 +1,123 @@
+:root {
+  --main-color: #0066b2;
+  --border-color: #ccc;
+  --bg-grey: #d3d3d3;
+  --bg-white: #ffffff;
+  --bg-hover: #f7f7f7;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background-color: var(--main-color);
+  color: var(--bg-white);
+}
+.t-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.t-center {
+  text-align: center;
+}
+.flex {
+  display: flex;
+}
+.flex-items {
+  display: flex;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.rounded {
+  border-radius: 6px;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  font-family: sans-serif;
+}
+.column {
+  flex-direction: column;
+}
 .home {
   height: 100vh;
+}
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero {
+  background-color: red;
+  padding: 20px;
+  background-image: url("/public/brussels\ metro.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.hero .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+.hero .content {
+  width: 30%;
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+.content {
+  color: var(--bg-white);
+}
+
+.content h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.content p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.content button {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: var(--main-color);
+}
+.content button a {
+  color: var(--bg-white);
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

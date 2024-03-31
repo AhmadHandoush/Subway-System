@@ -7,7 +7,7 @@ function Home() {
     <div className="home">
       <div className="container">
         <Hero />
-        <Title>Popular Stations</Title>
+        <Title>Popular Stations.</Title>
       </div>
     </div>
   );

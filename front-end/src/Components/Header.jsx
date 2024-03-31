@@ -5,7 +5,9 @@ function Header() {
   return (
     <header className="header flex-items ">
       <div className="container flex-between">
-        <div className="logo">KAH</div>
+        <div className="logo">
+          <img src="/WhatsApp Image 2024-03-31 at 2.37.24 PM.jpeg" alt="logo" />
+        </div>
         <nav className="nav flex">
           <ul className="main-nav flex-items">
             <li>

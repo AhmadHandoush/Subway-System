@@ -1,7 +1,7 @@
 :root {
   --main-color: #0066b2;
   --border-color: #ccc;
-  --bg-grey: #eee;
+  --bg-grey: #d3d3d3;
   --bg-white: #ffffff;
   --bg-hover: #f7f7f7;
 }
@@ -72,13 +72,25 @@ ul li a {
 .active {
   border-radius: 20px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-white);
 }
-ul li:last-child {
+
+nav button {
   background-color: var(--main-color);
   border-radius: 20px;
-  padding: 5px;
+  padding: 3px 10px;
+
+  border: none;
+  outline: none;
 }
-ul li:last-child a {
+nav button a {
   color: var(--bg-white);
   font-weight: bold;
+}
+.nav {
+  gap: 20px;
+}
+
+.App {
+  background-color: var(--bg-grey);
 }

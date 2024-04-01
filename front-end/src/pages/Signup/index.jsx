@@ -1,5 +1,5 @@
 function Signup() {
-  return <div>signup</div>;
+  return <div className="signup">.signupcard</div>;
 }
 
 export default Signup;

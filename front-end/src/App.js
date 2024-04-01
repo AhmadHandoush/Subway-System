@@ -13,7 +13,7 @@ import Signup from "./pages/Signup";
 import Footer from "./Components/Footer";
 
 function App() {
-  const isLoginPage = window.location.pathname === "/login";
+  const isLoginPage = window.location.pathname === "/login" || "/signup";
   return (
     <div className="App">
       <BrowserRouter>

@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import "./login.css";
 
 function Login() {
   return (
     <div className="login flex-center">
+      <div className="overlay"></div>
       <div className="login-card flex column">
         <div className="top-title flex-center">
           <h2>Login</h2>
@@ -23,10 +25,15 @@ function Login() {
             <input type="password" placeholder="Enter your password" />
           </div>
 
-          <button type="submit">Login</button>
+          <div className="submit flex-center">
+            <button type="submit">Login</button>
+          </div>
         </form>
         <p>
-          Don't have an account? <span>Signup</span>
+          Don't have an account?{" "}
+          <span>
+            <Link to={"/signup"}>Signup</Link>
+          </span>
         </p>
       </div>
     </div>

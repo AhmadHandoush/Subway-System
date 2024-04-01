@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import "../styles/footer.css";
 
-function Footer() {
+function Footer({ hidden }) {
+  if (hidden) {
+    return;
+  }
   return (
     <footer className="footer">
       <div className="container">

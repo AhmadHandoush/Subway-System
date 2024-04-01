@@ -10,8 +10,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    use Illuminate\Database\Eloquent\Model;
-
     protected $fillable = [
         'name',
         'email',
@@ -43,7 +41,7 @@ class User extends Authenticatable
 
     public function headquarters()
     {
-        return $this->hasOne(Headquarters::class);
+        return $this->hasOne(Headquarter::class);
     }
 
     public function senderChats()

@@ -12,35 +12,33 @@ function Signup() {
   const handlechange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const handleSubmit = async (e) => {
-      e.preventDefault();
 
-      try {
-        const response = await fetch("https://api.example.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+    try {
+      const response = await fetch("https://api.example.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-        if (!response.ok) {
-          throw new Error("Failed to submit data");
-        }
-
-        setFormData({
-          username: "",
-          email: "",
-        });
-
-        console.log("Data submitted successfully");
-      } catch (error) {
-        console.error("Error:", error);
+      if (!response.ok) {
+        throw new Error("Failed to submit data");
       }
-    };
+
+      setFormData({
+        username: "",
+        email: "",
+      });
+
+      console.log("Data submitted successfully");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+
   return (
     <div className="signup flex-center">
       <div className="overlay"></div>

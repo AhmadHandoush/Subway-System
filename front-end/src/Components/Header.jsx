@@ -18,12 +18,15 @@ function Header({ hidden }) {
             </li>
             <li>
               <NavLink to={"/stations"}>Stations</NavLink>
+            </li>{" "}
+            <li>
+              <NavLink to={"/rides"}>Rides</NavLink>
             </li>
             <li>
               <NavLink to={"/profile"}>Profile</NavLink>
             </li>
           </ul>
-          <button className="login">
+          <button className="btn-login">
             <Link to={"/login"}>Login</Link>
           </button>
         </nav>

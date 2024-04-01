@@ -118,7 +118,7 @@ form button {
   font-weight: bold;
 }
 
-.signup-card form h2 {
+.signup-card h2 {
   margin-bottom: 20px;
   color: var(--main-color);
   font-size: 40px;

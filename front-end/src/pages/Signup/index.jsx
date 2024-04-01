@@ -3,12 +3,43 @@ import "./signup.css";
 import { useState } from "react";
 
 function Signup() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    pasword: "",
+    confirm: "",
+  });
+  const handlechange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      try {
+        const response = await fetch("https://api.example.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to submit data");
+        }
+
+        setFormData({
+          username: "",
+          email: "",
+        });
+
+        console.log("Data submitted successfully");
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
   };
   return (
     <div className="signup flex-center">
@@ -26,8 +57,8 @@ function Signup() {
             <input
               type="text"
               placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={formData.username}
+              onChange={handlechange}
               required
             />
           </div>
@@ -39,8 +70,8 @@ function Signup() {
             <input
               type="text"
               placeholder="Enter your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handlechange}
               required
             />
           </div>
@@ -52,8 +83,8 @@ function Signup() {
             <input
               type="password"
               placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.pasword}
+              onChange={handlechange}
               required
             />
           </div>
@@ -65,8 +96,8 @@ function Signup() {
             <input
               type="password"
               placeholder="Enter your password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
+              value={formData.confirm}
+              onChange={handlechange}
               required
             />
           </div>

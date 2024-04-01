@@ -10,8 +10,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    // use Illuminate\Database\Eloquent\Model;
-
     protected $fillable = [
         'name',
         'email',

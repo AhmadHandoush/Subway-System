@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Card from "../../../Components/Card";
 
 // { id: 1, name: "ahmad", image: "ahmad", close: "12" },
@@ -31,8 +31,33 @@ function Popular() {
       location: "lebanon",
     },
   ];
-  //   const [stations, setStations] = useState([]);
-  //   setStations(arr);
+
+  // const [data, setData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("https://api.example.com/data");
+
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch data");
+  //       }
+
+  //       const jsonData = await response.json();
+
+  //       setData(jsonData);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
   return (
     <div className="popular-stations">
       {arr.map((station) => (

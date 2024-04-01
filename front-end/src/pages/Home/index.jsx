@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Hero from "./components/Hero";
 import Popular from "./components/Popular";
 import Title from "./components/Title";
@@ -12,6 +13,13 @@ function Home() {
         <Popular />
         <Title>Recommended Stations</Title>
         <Popular />
+        <div className="go-stations">
+          <button className="to-stations">
+            <Link>
+              View All stations<i class="fa-solid fa-arrow-right"></i>{" "}
+            </Link>
+          </button>
+        </div>
       </div>
     </div>
   );

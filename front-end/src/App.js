@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import "./styles/header.css";
 import Header from "./Components/Header";
 import Home from "./pages/Home";
@@ -7,16 +13,17 @@ import Signup from "./pages/Signup";
 import Footer from "./Components/Footer";
 
 function App() {
+  const isLoginPage = window.location.pathname === "/login";
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Header hidden={isLoginPage} />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
         </Routes>
-        <Footer />
+        <Footer hidden={isLoginPage} />
       </BrowserRouter>
     </div>
   );

@@ -185,3 +185,29 @@ body {
 .card p {
   padding: 5px;
 }
+.go-stations {
+  text-align: center;
+  padding: 20px 0;
+}
+.to-stations {
+  border: none;
+  outline: none;
+  border-radius: 30px;
+
+  font-weight: bold;
+  background-color: var(--main-color);
+
+  padding: 20px 20px;
+  width: 30%;
+}
+.to-stations a {
+  color: var(--bg-white);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.to-stations a i {
+  font-size: 20px;
+}

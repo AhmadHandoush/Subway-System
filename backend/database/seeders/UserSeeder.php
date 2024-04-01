@@ -37,6 +37,17 @@ class UserSeeder extends Seeder
             'user_id' => $user2->id,
         ]);
 
+        $userm = User::create([
+            'name' => 'Kamil Awad',
+            'email' => 'kamil.awad@gmail.com',
+            'password' => Hash::make('password'),
+            'role' => 'manager',
+        ]);
+
+        Manager::create([
+            'user_id' => $userm->id,
+        ]);
+
         $user3 = User::create([
             'name' => 'Admin User',
             'email' => 'admin.user@gmail.com',

@@ -6,10 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::table('chats', function (Blueprint $table) {
-            $table->string('content')->change();
+        Schema::create('chats', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('content');
             $table->unsignedBigInteger('sender_id');
             $table->unsignedBigInteger('recipient_id');
             $table->foreign('sender_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
@@ -17,10 +22,11 @@ return new class extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::table('table_chats', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('chats');
     }
 };

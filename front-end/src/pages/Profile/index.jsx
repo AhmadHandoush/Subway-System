@@ -1,10 +1,15 @@
 import { useState } from "react";
 import "./profile.css";
 import Editbox from "./components/Editbox";
+import Requestcoins from "./components/Requestcoins";
 
 function Profile() {
   const [open, setOpen] = useState(false);
   const [overlay, setOverlay] = useState(false);
+  const [request, setRequest] = useState(false);
+  const handleRequest = () => {
+    setRequest(!request);
+  };
   return (
     <div className="profile">
       {overlay && <div className="overlay"></div>}
@@ -46,6 +51,12 @@ function Profile() {
                 <i class="fa-solid fa-pen-to-square"></i>
               </button>
             </div>
+          </div>
+          <div className="coins">
+            <button className="btn_request" onClick={handleRequest}>
+              Request Coins
+            </button>
+            {request && <Requestcoins />}
           </div>
         </div>
         <div className="right flex column">

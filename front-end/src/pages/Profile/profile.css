@@ -180,3 +180,34 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 10;
 }
+.coins {
+  margin-top: 20px;
+}
+.coins form {
+  margin-top: 20px;
+  border: 1px solid var(--main-color);
+}
+
+.btn_request {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+.coins form input {
+  flex: 1;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border: 1px solid var(--bg-grey);
+}
+.left .send {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: fit-content;
+  font-size: 15px;
+}

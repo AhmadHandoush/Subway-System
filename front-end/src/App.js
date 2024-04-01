@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Footer from "./Components/Footer";
 import Profile from "./pages/Profile";
+import All from './pages/allStations'
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Header hidden={isLoginPage} />
         <Routes>
+          <Route path="/allStations" element={<All />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>

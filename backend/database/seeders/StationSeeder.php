@@ -19,7 +19,7 @@ class StationSeeder extends Seeder
             'longitude' => 35.4955,
             'status' => 'Active',
             'image' => 'station1.jpg',
-            'manager_id' => 5,
+            'manager_id' => 1,
         ]);
 
         Station::create([
@@ -30,7 +30,7 @@ class StationSeeder extends Seeder
             'longitude' => 36.1328,
             'status' => 'Active',
             'image' => 'station2.jpg',
-            'manager_id' => 6,
+            'manager_id' => 2,
         ]);
     }
 }

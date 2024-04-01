@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./login.css";
+import { useState } from "react";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="login flex-center">
       <div className="overlay"></div>
@@ -9,20 +15,32 @@ function Login() {
         <div className="top-title flex-center">
           <h2>Login</h2>
         </div>
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <label>Email</label>
           <div className="input">
             <span className="flex-center">
-              <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-envelope"></i>
             </span>
-            <input type="text" placeholder="Enter your email" />
+            <input
+              type="text"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
           <label>Password</label>
           <div className="input">
             <span className="flex-center">
               <i class="fa-solid fa-lock"></i>
             </span>
-            <input type="password" placeholder="Enter your password" />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </div>
 
           <div className="submit flex-center">

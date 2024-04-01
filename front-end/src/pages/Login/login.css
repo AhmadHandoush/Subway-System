@@ -86,7 +86,7 @@ body {
   margin-bottom: 5px;
   display: block;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 .login-card .input {
   display: flex;
@@ -132,6 +132,7 @@ form button {
   font-weight: bold;
   font-size: 24px;
   color: var(--bg-white);
+  cursor: pointer;
 }
 form .submit {
   margin-bottom: 20px;

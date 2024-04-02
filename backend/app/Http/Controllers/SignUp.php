@@ -20,6 +20,6 @@ class SignUp extends Controller
         ]);
 
         // Optionally, you can return a response indicating success
-        return response()->json(['message' => 'Data validated successfully', 'data' => $validatedData], 200);
+        return response()->json(['message' => 'Data validated successfully'], 200);
       }
 }

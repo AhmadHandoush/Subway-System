@@ -7,18 +7,17 @@ import Footer from "./Components/Footer";
 import Profile from "./pages/Profile";
 
 function App() {
-  const isLoginPage = window.location.pathname === ("/login" || "/signup");
   return (
     <div className="App">
       <BrowserRouter>
-        <Header hidden={isLoginPage} />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
         </Routes>
-        <Footer hidden={isLoginPage} />
+        <Footer />
       </BrowserRouter>
     </div>
   );

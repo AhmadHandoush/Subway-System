@@ -79,7 +79,7 @@ body {
   padding: 15px 30px;
   background-color: var(--bg-white);
   width: 30%;
-  position: relative;
+  position: absolute;
   z-index: 1000;
 }
 .signup-card label {
@@ -123,6 +123,8 @@ form button {
   color: var(--main-color);
   font-size: 40px;
 }
+.signup-card form input {
+}
 
 form button {
   width: 60%;
@@ -136,6 +138,9 @@ form button {
 }
 form .submit {
   margin-bottom: 20px;
+}
+.signup-card p {
+  margin-top: 20px;
 }
 .signup-card p span a {
   font-weight: bold;

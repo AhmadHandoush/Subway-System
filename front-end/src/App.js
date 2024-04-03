@@ -6,21 +6,26 @@ import Signup from "./pages/Signup";
 import Footer from "./Components/Footer";
 import Profile from "./pages/Profile";
 import All from "./pages/allStations";
-import './styles/colors.css'
-
-import ReviewCard from "./Components/reviewCard/reviewCard";
+import Manager from "./pages/Manager";
+import "./styles/colors.css";
+import Ride from "./pages/Manager/Ride";
+import Chat from "./pages/Manager/Chat";
+import Station from "./pages/Manager/Station";
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
   return (
+    
     <div className="App">
       <BrowserRouter>
         <Header hidden={isLoginPage} />
-        <ReviewCard
-          username="Ali"
-          reviewText="asdhafag ad asdasd as as asdsadasd asd ha fas fsdfasdf asd fasd fs sfadhadfgadgadgadfgafgd"
-        />
+        
         <Routes>
+          <Route path="/Manager" element={<Manager />}> 
+             <Route path="/Manager/Station" Component={<Station/>}/>
+             <Route path="/Manager/Chat" Component={<Chat/>}/>
+             <Route path="/Manager/Ride" Component={<Ride/>}/>
+          </Route>
           <Route path="/allStations" element={<All />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>

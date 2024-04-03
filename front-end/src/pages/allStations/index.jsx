@@ -1,9 +1,15 @@
 import Search from "./components/search";
 import Map from './components/map'
+import axios from "axios"
+import { useEffect,useState } from "react";
 
 const All = () => {
+  const [Stations,setStation]= useState([])
 
+  const getStations=()=>{
 
+    
+  }
 
 
 

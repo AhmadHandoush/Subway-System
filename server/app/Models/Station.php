@@ -13,8 +13,13 @@ class Station extends Model
         return $this->belongsTo(Manager::class);
     }
 
-    public function rides()
+    public function departureSchedules()
     {
         return $this->hasMany(Ride::class, 'departure_station_id');
+    }
+
+    public function arrivalSchedules()
+    {
+        return $this->hasMany(Ride::class, 'arrival_station_id');
     }
 }

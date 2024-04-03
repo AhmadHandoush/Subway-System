@@ -1,22 +1,57 @@
-import { Link } from "react-router-dom";
 import "./login.css";
+
+import { Link, useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit data");
+      }
+
+      const responseData = await response.json();
+      if (responseData.user.role === "passenger") {
+        navigate("/");
+      }
+      console.log("Response from server:", responseData);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="login flex-center">
       <div className="overlay"></div>
+
       <div className="login-card flex column">
         <div className="top-title flex-center">
           <h2>Login</h2>
         </div>
+
         <form onSubmit={handleSubmit}>
           <label>Email</label>
+
           <div className="input">
             <span className="flex-center">
               <i class="fa-solid fa-envelope"></i>
@@ -24,8 +59,9 @@ function Login() {
             <input
               type="text"
               placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -37,12 +73,12 @@ function Login() {
             <input
               type="password"
               placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
-
           <div className="submit flex-center">
             <button type="submit">Login</button>
           </div>

@@ -52,3 +52,7 @@
 .shadow{
     box-shadow: 0 4px 4px gray ;
 }
+
+.border{
+    border: 1px solid black;
+}

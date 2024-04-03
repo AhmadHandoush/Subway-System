@@ -1,20 +1,16 @@
-import './index.css'
-import ManagerSidebar from '../../Components/managerSidebar/managerSidebar'
-import Ride from './Ride'
-import Station from './Station'
-import Chat from './Chat'
+import "./index.css";
+import ManagerSidebar from "../../Components/managerSidebar/managerSidebar";
+import { Outlet } from "react-router-dom";
 
+const Manager = () => {
+  return (
+    <div className="flex Manager">
+      <ManagerSidebar />
+      <div className="full-width">
+        <Outlet />
+      </div>
+    </div>
+  );
+};
 
-const Manager=()=>{
-
-
-    return(
-        <div>      
-            <ManagerSidebar/>    
-            <div>
-            </div>
-        </div>
-    )
-}
-
-export default Manager
+export default Manager;

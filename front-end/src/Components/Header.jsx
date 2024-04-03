@@ -1,10 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import "../styles/header.css";
 
-function Header({ hidden }) {
-  if (hidden) {
-    return;
-  }
+function Header() {
   return (
     <header className="header flex-items ">
       <div className="container flex-between">

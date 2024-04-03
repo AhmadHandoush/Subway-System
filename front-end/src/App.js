@@ -13,18 +13,17 @@ import Chat from "./pages/Manager/Chat";
 import Station from "./pages/Manager/Station";
 
 function App() {
-  const isLoginPage = window.location.pathname === "/login";
   return (
-    
     <div className="App">
       <BrowserRouter>
-        <Header hidden={isLoginPage} />
-        
+        <Header />
+        <Header />
+
         <Routes>
-          <Route path="/Manager" element={<Manager />}> 
-             <Route path="/Manager/Station" Component={<Station/>}/>
-             <Route path="/Manager/Chat" Component={<Chat/>}/>
-             <Route path="/Manager/Ride" Component={<Ride/>}/>
+          <Route path="/Manager" element={<Manager />}>
+            <Route path="/Manager/Station" element={<Station />} />
+            <Route path="/Manager/Chat" element={<Chat />} />
+            <Route path="/Manager/Ride" element={<Ride />} />
           </Route>
           <Route path="/allStations" element={<All />}></Route>
           <Route path="/" element={<Home />}></Route>
@@ -32,7 +31,7 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
         </Routes>
-        <Footer hidden={isLoginPage} />
+        <Footer />
       </BrowserRouter>
     </div>
   );

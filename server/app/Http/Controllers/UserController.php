@@ -52,15 +52,6 @@ class UserController extends Controller
 
         return response()->json($user);
     }
-    public function getUserBalance($id)
-    {
-        $userBalance = Passenger::where('user_id', $id)->first();
-
-        if (!$userBalance) {
-            return response()->json(['error' => 'User balance not found'], 404);
-        }
-
-        return response()->json(['user_id' => $userBalance->user_id, 'balance' => $userBalance->balance]);
-    }
+   
 
 }

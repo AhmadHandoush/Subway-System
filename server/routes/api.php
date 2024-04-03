@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoinController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StationController;
@@ -30,6 +31,7 @@ Route::post('get_passenger', [PassengerController::class, "get_passenger_by_id"]
 Route::get('get_rides', [RideController::class, "get_all_rides"]);
 Route::get('/users/{id}', [UserController::class, 'getUser']);
 Route::post('/users/{id}/update', [UserController::class, 'updateUser']);
-Route::get('/user/{id}/balance', [UserController::class, 'getUserBalance']);
+Route::get('/user/{id}/balance', [PassengerController::class, 'getUserBalance']);
 Route::post('/add_user', [UserController::class,"store"]);
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/request_coins', [CoinController::class, 'requestcoins']);

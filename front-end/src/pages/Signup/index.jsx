@@ -5,8 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 function MyComponent() {
   const navigate = useNavigate();
+  window.localStorage.clear();
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -19,7 +20,7 @@ function MyComponent() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/register", {
+      const response = await fetch("http://127.0.0.1:8000/api/add_user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,9 +52,9 @@ function MyComponent() {
             </span>
             <input
               type="text"
-              name="username"
+              name="name"
               placeholder="Username"
-              value={formData.username}
+              value={formData.name}
               onChange={handleChange}
             />
           </div>

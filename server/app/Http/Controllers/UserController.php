@@ -15,12 +15,16 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ]);
 
 
         $user = new User();
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
+        $user->latitude = $validatedData['latitude'];
+        $user->longitude = $validatedData['longitude'];
         $user->password = bcrypt($validatedData['password']);
         $user->save();
 

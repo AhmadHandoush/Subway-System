@@ -10,7 +10,23 @@ function MyComponent() {
     name: "",
     email: "",
     password: "",
+    latitude: "",
+    longitude: "",
   });
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setFormData({
+          ...formData,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  };
+  getLocation();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -84,6 +100,8 @@ function MyComponent() {
               value={formData.password}
               onChange={handleChange}
             />
+            <input type="hidden" name="latitude" value={formData.latitude} />
+            <input type="hidden" name="longitude" value={formData.longitude} />
           </div>
           <div className="flex-center">
             <button type="submit">Submit</button>

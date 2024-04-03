@@ -21,25 +21,28 @@ class stationsController extends Controller
 
         $manager = Manager::find($req->id);
 
-        if($manager){
-            $station = $manager->stations;
-
-            $station->update([
-                'open_hour'=>$req->open_hour,
-                'close_hour'=>$req->close_hour,
-                'status'=>$req->status
-            ]);
-
+        if(!$manager) {
+            return response()->json(["message" => "Manager not found"], 404);
         }
-         
-        return response()->json([
-
-        ]);
-
-
     
+        // Retrieve the first Station associated with the Manager
+        $station = $manager->stations()->first();
+    
+        // Check if Station exists
+        if(!$station) {
+            return response()->json(["message" => "Station not found"], 404);
+        }
+    
+        // Update the Station attributes
+        $station->update([
+            'open_hour' => $req->open_hour,
+            'close_hour' => $req->close_hour,
+            'status' => $req->status
+        ]);
+    
+        // Return a success response
+        return response()->json(["message" => "Station updated successfully"], 200);
+    }
     }
 
 
-
-}

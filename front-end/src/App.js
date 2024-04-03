@@ -5,7 +5,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Footer from "./Components/Footer";
 import Profile from "./pages/Profile";
-import All from './pages/allStations'
+import All from "./pages/allStations";
+import './styles/colors.css'
+
+import ReviewCard from "./Components/reviewCard/reviewCard";
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
@@ -13,6 +16,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header hidden={isLoginPage} />
+        <ReviewCard
+          username="Ali"
+          reviewText="asdhafag ad asdasd as as asdsadasd asd ha fas fsdfasdf asd fasd fs sfadhadfgadgadgadfgafgd"
+        />
         <Routes>
           <Route path="/allStations" element={<All />}></Route>
           <Route path="/" element={<Home />}></Route>

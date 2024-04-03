@@ -44,3 +44,7 @@
 .column{
     flex-direction: column;
 }
+
+.shadow{
+    box-shadow: 0 4px 4px gray ;
+}

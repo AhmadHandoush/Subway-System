@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Station extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'close_hour',
+        'open_hour',
+        'status',
+    ];
     public function manager()
     {
         return $this->belongsTo(Manager::class);

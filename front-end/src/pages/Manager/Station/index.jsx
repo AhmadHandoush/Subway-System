@@ -1,23 +1,37 @@
+import { useState } from "react";
 import "./index.css";
+import ReviewCard from '../../../Components/reviewCard/reviewCard'
+import { FaPen } from "react-icons/fa";
+
 
 const Station = () => {
+
+  const [stationName,setStationName]=useState('')
+  const [stationLocation,setStationLocation]=useState('')
+  const [stationStatus,setStationStatus]=useState('')
+  const [stationOpen,setStationOpen]=useState('')
+  const [stationClose,setStationClose]=useState('')
+
+const handleUpdate=()=>{
+
+}
+
   return (
     <div className="station flex center column full-width">
-      <p>Station</p>
       <div className="update-station flex bg-secondary full-width column">
         <div className="flex between">
           <label htmlFor="name"> Station name:</label>
-          <input type="text " id="name" />
+          <input type="text " id="name" onChange={(e)=>setStationName(e.target.value)} />
         </div>
 
         <div className="flex between">
           <label htmlFor="location"> Station location:</label>
-          <input type="text " id="location" />
+          <input type="text " id="location" onChange={(e)=>setStationLocation(e.target.value)}/>
         </div>
 
         <div className="flex select between">
           <label htmlFor="status">Station status</label>
-          <select name="" id="status">
+          <select name="" id="status" onChange={(e)=>setStationStatus(e.target.value)}>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
           </select>
@@ -25,7 +39,7 @@ const Station = () => {
 
         <div className="select flex between">
           <label htmlFor="open">Opens at</label>
-          <select name="" id="open">
+          <select name="" id="open" onChange={(e)=>setStationOpen(e.target.value)}>
             <option value="1:00">1:00</option>
             <option value="2:00">2:00</option>
             <option value="3:00">3:00</option>
@@ -54,7 +68,7 @@ const Station = () => {
 
         <div className="flex select between">
           <label htmlFor="close">Closes at</label>
-          <select name="" id="close">
+          <select name="" id="close" onChange={(e)=>setStationClose(e.target.value)}>
             <option value="1:00">1:00</option>
             <option value="2:00">2:00</option>
             <option value="3:00">3:00</option>
@@ -80,11 +94,18 @@ const Station = () => {
             <option value="00:00">00:00</option>
           </select>
         </div>
-        <button className="update-btn"></button>
+        <button className="update-btn bg-primary txt-white" onClick={handleUpdate}>update <span></span>  <FaPen />
+</button>
       </div>
-      <div className="reviews-div flex column center">
+      <div className=" flex column center full-width">
         <h1>Recent reviews</h1>
-
+        <div className="update-station bg-secondary full-width column">
+            <ReviewCard username="ALI" reviewText="sfsfhhasfasdfhjajsdfjjfvjkjklvaklklaskklafv" />
+            <ReviewCard username="ALI" reviewText="sfsfhhasfasdfhjajsdfjjfvjkjklvaklklaskklafv" />
+            <ReviewCard username="ALI" reviewText="sfsfhhasfasdfhjajsdfjjfvjkjklvaklklaskklafv" />
+            <ReviewCard username="ALI" reviewText="sfsfhhasfasdfhjajsdfjjfvjkjklvaklklaskklafv" />
+            <ReviewCard username="ALI" reviewText="sfsfhhasfasdfhjajsdfjjfvjkjklvaklklaskklafv" />
+        </div>
       </div>
     </div>
   );

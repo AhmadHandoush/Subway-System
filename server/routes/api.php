@@ -6,6 +6,7 @@ use App\Http\Controllers\StationController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\RideController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,3 +32,4 @@ Route::get('/users/{id}', [UserController::class, 'getUser']);
 Route::post('/users/{id}/update', [UserController::class, 'updateUser']);
 Route::get('/user/{id}/balance', [UserController::class, 'getUserBalance']);
 Route::post('/add_user', [UserController::class,"store"]);
+Route::post('/login', [LoginController::class, 'login']);

@@ -31,7 +31,11 @@ function Login() {
       }
 
       const responseData = await response.json();
-      if (responseData.user.role === "passenger") {
+      window.localStorage.setItem(
+        "user_id",
+        JSON.stringify(responseData[0].id)
+      );
+      if (responseData[0].role === "passenger") {
         navigate("/");
       }
       console.log("Response from server:", responseData);

@@ -14,7 +14,7 @@ class LoginController extends Controller
         $user = User::where('email', $credentials['email'])->first();
 
         if ($user && password_verify($credentials['password'], $user->password)) {
-            return response()->json(['message' => 'Login successful'], 200);
+            return response()->json(['message' => 'Login successful',$user], 200);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

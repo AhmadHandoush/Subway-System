@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Header />
+       
 
         <Routes>
           <Route path="/Manager" element={<Manager />}>

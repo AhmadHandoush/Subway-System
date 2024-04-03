@@ -65,6 +65,9 @@ body {
   background-size: cover;
   position: relative;
 }
+.error {
+  color: red;
+}
 .login .overlay {
   position: absolute;
   left: 0;
@@ -136,6 +139,9 @@ form button {
 }
 form .submit {
   margin-bottom: 20px;
+}
+form .submit small {
+  height: 20px;
 }
 .login-card p span a {
   font-weight: bold;

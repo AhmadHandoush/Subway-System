@@ -24,8 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('get_stations', [StationController::class, "get_all_stations"]);
 Route::get('get_active_stations', [StationController::class, "get_active_stations"]);
-Route::post('get_station_dep_schedule', [StationController::class, "get_departure_schedules"]);
-Route::post('get_station_arr_schedule', [StationController::class, "get_arrival_schedules"]);
+Route::post('get_departure_schedules', [StationController::class, "get_departure_schedules"]);
+Route::post('get_arrival_schedules', [StationController::class, "get_arrival_schedules"]);
+Route::post('remove_station', [StationController::class, "remove_station"]);
+Route::post('shutdown_station', [StationController::class, "shutdown_station"]);
+Route::post('activate_station', [StationController::class, "activate_station"]);
 Route::get('get_passengers', [PassengerController::class, "get_all_passengers"]);
 Route::post('get_passenger', [PassengerController::class, "get_passenger_by_id"]);
 Route::get('get_rides', [RideController::class, "get_all_rides"]);
+Route::post('get_station_rides', [RideController::class, "get_station_rides"]);

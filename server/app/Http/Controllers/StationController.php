@@ -42,4 +42,50 @@ class StationController extends Controller
         $arrivalSchedules = $station->arrivalSchedules;
         return response()->json($arrivalSchedules);
     }
+
+    public function remove_station(Request $req)
+    {
+        $station = Station::find($req->id);
+        if (!$station) {
+            return response()->json(['error' => 'Station not found'], 404);
+        }
+        $station->delete();
+        return response()->json([
+            "message" => "deleted successfully"
+        ], 200);
+    }
+
+    public function shutdown_station(Request $req)
+    {
+        $station = Station::find($req->id);
+        if (!$station) {
+            return response()->json(['error' => 'Station not found'], 404);
+        }
+        $station->update([
+            'status' => 'Inactive',
+        ]);
+    
+        return response()->json([
+            'message' => 'station shuttdown successfully',
+            'station' => $station,
+        ], 200);
+    }
+
+    public function activate_station(Request $req)
+    {
+        $station = Station::find($req->id);
+        if (!$station) {
+            return response()->json(['error' => 'Station not found'], 404);
+        }
+        /*$station->update([
+            'status' => 'Active',
+        ]);*/
+        $station->status = 'Active';
+        $station->save();
+    
+        return response()->json([
+            'message' => 'station activated successfully',
+            'station' => $station,
+        ], 200);
+    }
 }

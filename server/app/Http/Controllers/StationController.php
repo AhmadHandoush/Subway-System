@@ -17,4 +17,5 @@ class StationController extends Controller
         $active_stations = Station::where('status', "Active")->get();
         return response()->json($active_stations);
     }
+    
 }

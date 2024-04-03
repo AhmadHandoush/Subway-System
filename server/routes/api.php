@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\RideController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +27,6 @@ Route::get('get_active_stations', [StationController::class, "get_active_station
 Route::get('get_passengers', [PassengerController::class, "get_all_passengers"]);
 Route::post('get_passenger', [PassengerController::class, "get_passenger_by_id"]);
 Route::get('get_rides', [RideController::class, "get_all_rides"]);
+Route::get('/users/{id}', [UserController::class, 'getUser']);
+Route::post('/users/{id}/update', [UserController::class, 'updateUser']);
+Route::get('/user/{id}/balance', [UserController::class, 'getUserBalance']);

@@ -6,8 +6,7 @@ import Title from "../../Home/components/Title";
 
 
 const Station = () => {
-  const [stationName, setStationName] = useState("");
-  const [stationLocation, setStationLocation] = useState("");
+
   const [stationStatus, setStationStatus] = useState("");
   const [stationOpen, setStationOpen] = useState("");
   const [stationClose, setStationClose] = useState("");
@@ -19,24 +18,7 @@ const Station = () => {
   return (
     <div className="station flex center column full-width">
       <div className="update-station flex bg-secondary full-width column">
-        <div className="flex between">
-          <label htmlFor="name"> Station name:</label>
-          <input
-            type="text "
-            id="name"
-            onChange={(e) => setStationName(e.target.value)}
-          />
-        </div>
-
-        <div className="flex between">
-          <label htmlFor="location"> Station location:</label>
-          <input
-            type="text "
-            id="location"
-            onChange={(e) => setStationLocation(e.target.value)}
-          />
-        </div>
-
+        <h1>Update station:</h1>
         <div className="flex select between">
           <label htmlFor="status">Station status</label>
           <select

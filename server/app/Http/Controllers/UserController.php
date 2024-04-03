@@ -8,6 +8,24 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function store(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8',
+        ]);
+
+
+        $user = new User();
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = bcrypt($validatedData['password']);
+        $user->save();
+
+        return response()->json(['message' => 'User created successfully'], 201);
+    }
     public function getUser($id)
     {
         $user = User::findOrFail($id);

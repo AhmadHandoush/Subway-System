@@ -30,3 +30,4 @@ Route::get('get_rides', [RideController::class, "get_all_rides"]);
 Route::get('/users/{id}', [UserController::class, 'getUser']);
 Route::post('/users/{id}/update', [UserController::class, 'updateUser']);
 Route::get('/user/{id}/balance', [UserController::class, 'getUserBalance']);
+Route::post('/add_user', [UserController::class,"store"]);

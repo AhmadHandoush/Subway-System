@@ -1,1 +1,18 @@
+.update-stations {
+  width: 90%;
+  height: 328px;
+  box-sizing: border-box;
+  padding: 20px;
+  gap: 25px;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
 
+.arrive {
+  overflow: scroll;
+}
+
+.arrive::-webkit-scrollbar {
+  display: none;
+}

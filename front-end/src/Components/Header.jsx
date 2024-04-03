@@ -14,10 +14,10 @@ function Header() {
               <NavLink to={"/"}>Home</NavLink>
             </li>
             <li>
-              <NavLink to={"/stations"}>Stations</NavLink>
+              <NavLink to={"/allstations"}>Stations</NavLink>
             </li>{" "}
             <li>
-              <NavLink to={"/rides"}>Rides</NavLink>
+              <NavLink to={"/allrides"}>Rides</NavLink>
             </li>
             <li>
               <NavLink to={"/profile"}>Profile</NavLink>

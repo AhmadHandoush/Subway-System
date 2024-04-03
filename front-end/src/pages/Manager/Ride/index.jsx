@@ -6,6 +6,7 @@ import Title from "../../Home/components/Title";
 const Ride = () => {
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
+  const [arrivalStation, setArrivalStation] = useState("");
 
   const handleRideUpdate = () => {};
 
@@ -66,6 +67,19 @@ const Ride = () => {
           </select>
         </div>
 
+        <div className="select flex between">
+          <label htmlFor="arrivalStation">Arrival station:</label>
+          <select
+            name=""
+            id="arrivalStation"
+            onChange={(e) => setArrivalStation(e.target.value)}
+          >
+            {times.map((time) => (
+              <option value={time}>{time}</option>
+            ))}
+          </select>
+        </div>
+
         <button
           className="update-btn bg-primary txt-white"
           onClick={handleRideUpdate}
@@ -75,9 +89,11 @@ const Ride = () => {
       </div>
       <div className=" flex column center full-width">
         <Title>Recent Rides</Title>
-        <div className="update-station flex between bg-secondary full-width">
-          <div className="half-width ">
-            <h1 className="h1">Arriving</h1>
+        <div className="update-stations flex between bg-secondary full-width">
+          <div className="half-width arrive">
+            <div className="flex center">
+              <h1 className="h1">Arriving</h1>
+            </div>
             <RideCard
               departure="3:00"
               arrival="4:00"
@@ -103,8 +119,10 @@ const Ride = () => {
               imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
             />
           </div>
-          <div className="half-width ">
-            <h1 className="h1">Departing</h1>
+          <div className="half-width arrive">
+            <div className="flex center">
+              <h1 className="h1">Departing</h1>
+            </div>
             <RideCard
               departure="3:00"
               arrival="4:00"

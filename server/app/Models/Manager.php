@@ -14,8 +14,8 @@ class Manager extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function stations()
+    public function station()
     {
-        return $this->hasMany(Station::class);
+        return $this->hasOne(Station::class);
     }
 }

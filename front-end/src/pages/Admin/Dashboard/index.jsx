@@ -1,8 +1,8 @@
 import "./index.css";
 
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
@@ -10,6 +10,17 @@ const Dashboard = () => {
   const [nbrPassengers, setNbrPassengers] = useState(0);
   const [nbrActStations, setnbrActStations] = useState(0);
   const [activeStations, setActiveStations] = useState([]);
+  const navigate = useNavigate();
+
+  const navigateToDashboard = () => {
+    navigate('/admin/dashboard');
+  };
+  const navigateToBranches = () => {
+    navigate('/admin/branches');
+  };
+  const navigateToCoin = () => {
+    navigate('/admin/coinrequest');
+  };
 
   useEffect(() => {
     getNbrPassengers();
@@ -58,24 +69,22 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex admin">
-      <div className="panel flex">
-        <div className="panel-left flex column">
+      <div className="panel full-width flex">
+        <div className="panel-left full-width flex column">
           <div className="logo">
             <img src="" alt="" className="logo-img" />
             <h2>ADMIN</h2>
           </div>
 
           <div className="side-bar flex column">
-              <a href="#">
+              <a href="#" onClick={navigateToDashboard}>
                 
                 <h3>Dashboard</h3>
               </a>
-              <a href="#">
-                
-                <h3>FligBrancheshts</h3>
+              <a href="#" onClick={navigateToBranches}>
+                <h3>Branches</h3>
               </a>
-              <a href="#">
+              <a href="#" onClick={navigateToCoin}>
                 
                 <h3>Coin Requests</h3>
               </a>
@@ -88,19 +97,19 @@ const Dashboard = () => {
           </div>
 
           <div className="analysis flex center">
-            <div className="card">
+            <div className="station-card">
               
               <h4>Total Passengers</h4>
               <h3 className="nb-flights">{nbrPassengers}</h3>
             </div>
 
-            <div className="card">
+            <div className="station-card">
               
               <h4>Active Stations</h4>
               <h3 className="users">{nbrActStations}</h3>
             </div>
 
-            <div className="card">
+            <div className="station-card">
               
               <h4>Revenue</h4>
               <h3 className="rev">{nbrPassengers}</h3>
@@ -108,7 +117,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
   

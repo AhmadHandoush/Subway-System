@@ -14,6 +14,7 @@ import Station from "./pages/Manager/Station";
 import Admin from "./pages/Admin";
 import Branches from "./pages/Admin/Branches"
 import Dashboard from "./pages/Admin/Dashboard";
+import CoinRequest from "./pages/Admin/CoinRequest";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/admin" element={<Admin />}>
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/branches" element={<Branches />} />
+            <Route path="/admin/coinrequest" element={<CoinRequest />} />
           </Route>
         </Routes>
         <Footer />

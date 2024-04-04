@@ -17,6 +17,7 @@ class Station extends Model
         'longitude',
         'status',
         'image',
+        'manager_id',
     ];
 
     public function manager()

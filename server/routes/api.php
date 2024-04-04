@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\RideController;
+use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -55,5 +56,6 @@ Route::get('coin_requests', [CoinController::class, 'get_requestcoins']);
 Route::post('accept_request', [CoinController::class, 'accept_requestcoin']);
 Route::post('reject_request', [CoinController::class, 'reject_requestcoin']);
 
-Route::post('get_station_rides', [RideController::class, "get_station_rides"]);
+Route::post('add_station', [AdminController::class, 'addStation']);
 
+Route::post('get_station_rides', [RideController::class, "get_station_rides"]);

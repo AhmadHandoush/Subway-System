@@ -35,3 +35,4 @@ Route::get('/user/{id}/balance', [PassengerController::class, 'getUserBalance'])
 Route::post('/add_user', [UserController::class,"store"]);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/request_coins', [CoinController::class, 'requestcoins']);
+Route::get('/get_three', [StationController::class, 'get_three']);

@@ -62,7 +62,7 @@ function Profile() {
             <button className="btn_request" onClick={handleRequest}>
               Request Coins
             </button>
-            {request && <Requestcoins />}
+            {request && <Requestcoins setRequest={setRequest} />}
           </div>
         </div>
         <div className="right flex column">

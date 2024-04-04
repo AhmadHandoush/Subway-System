@@ -19,7 +19,7 @@ class CoinController extends Controller
         $payment->amount = $validatedData['amount'];
         $payment->save();
 
-        return response()->json(['message' => 'Payment added successfully'], 201);
+        return response()->json(['message' => 'Request Sent successfully'], 201);
 
     }
 }

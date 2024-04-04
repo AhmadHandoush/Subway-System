@@ -17,5 +17,12 @@ class StationController extends Controller
         $active_stations = Station::where('status', "Active")->get();
         return response()->json($active_stations);
     }
-    
+    public function get_three()
+    {
+        // Retrieve three stations from the stations table
+        $stations = Station::limit(3)->get();
+
+        return response()->json(['stations' => $stations], 200);
+    }
+
 }

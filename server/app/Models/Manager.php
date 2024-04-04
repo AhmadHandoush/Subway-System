@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Manager extends Model
 {
     use HasFactory;
+use App\Models\Station;
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function stations()
+    public function station()
     {
-        return $this->hasMany(Station::class);
+        return $this->hasOne(Station::class);
     }
 }

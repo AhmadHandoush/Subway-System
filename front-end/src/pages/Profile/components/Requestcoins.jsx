@@ -5,7 +5,7 @@ function Requestcoins() {
   const [id, setId] = useState(window.localStorage.getItem("user_id"));
   const [success, setSuccess] = useState(false);
   const data = {
-    passenger_id: id,
+    passenger_id: 5,
     amount: inputValue,
   };
 

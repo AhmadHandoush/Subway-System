@@ -13,9 +13,8 @@ function Hero() {
       <div className="content" data-aos="fade-up">
         <h2>Experience Great & Enjoyable Trip Today</h2>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores sunt
-          laborum sed illo recusandae aut corporis fuga tempore temporibus
-          sequi.
+          We are the best in the Middle East, We provide the best services for
+          our passengers and we work for your comfort all the time. Trust us !
         </p>
         <button>
           <Link>

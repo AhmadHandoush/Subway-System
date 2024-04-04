@@ -1,5 +1,29 @@
+import { useEffect, useState } from "react";
+
 function Info({ data, setOpen, setOverlay }) {
   const { name, email } = data;
+  const [balance, setBalance] = useState(null);
+
+  const [id, setId] = useState(window.localStorage.getItem("user_id"));
+
+  useEffect(() => {
+    const fetchBalanceData = async () => {
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:8000/api/user/balance/${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch balance data");
+        }
+        const data = await response.json();
+        setBalance(data.balance);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchBalanceData();
+  }, [id]);
+
   return (
     <div className="user-info">
       <div className="user-details flex column">
@@ -13,7 +37,7 @@ function Info({ data, setOpen, setOverlay }) {
         </div>
         <div className="username flex-between flex-items">
           <h2>Balance:</h2>
-          <p>200</p>
+          <p>{balance}</p>
         </div>
         <button
           className=" edit flex-center"

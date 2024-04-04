@@ -21,7 +21,7 @@ function Home() {
         <Popular />
         <div className="go-stations">
           <button className="to-stations" data-aos="fade-left">
-            <Link>
+            <Link to={"/stations"}>
               View All stations<i class="fa-solid fa-arrow-right"></i>{" "}
             </Link>
           </button>

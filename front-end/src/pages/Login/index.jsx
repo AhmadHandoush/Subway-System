@@ -38,6 +38,12 @@ function Login() {
       if (responseData[0].role === "passenger") {
         navigate("/");
       }
+      if (responseData[0].role === "manager") {
+        navigate("/Manager");
+      }
+      if (responseData[0].role === "admin") {
+        navigate("/admin");
+      }
     } catch (error) {
       console.error("Error:", error);
       setError(true);

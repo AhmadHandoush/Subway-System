@@ -23,6 +23,7 @@ function Profile() {
         }
         const jsonData = await response.json();
         setData(jsonData);
+        console.log(jsonData);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -32,6 +33,7 @@ function Profile() {
 
     fetchData();
   }, []);
+  console.log(data);
 
   if (loading) {
     return <Loader />;

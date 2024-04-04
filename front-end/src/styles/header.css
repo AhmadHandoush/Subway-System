@@ -157,4 +157,5 @@ header .menu {
 .btn-logout {
   color: var(--bg-white);
   font-weight: bold;
+  cursor: pointer;
 }

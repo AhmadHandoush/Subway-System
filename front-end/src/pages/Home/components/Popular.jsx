@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../../../Components/Card";
 import "aos/dist/aos.css";
 import AOS from "aos";
-
+import Loader from "../../../Components/Loader";
 function Popular() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,6 +10,7 @@ function Popular() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch("http://127.0.0.1:8000/api/get_three");
 
@@ -20,6 +21,7 @@ function Popular() {
         const jsonData = await response.json();
 
         setData(jsonData.stations);
+        setIsLoading(false);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -35,6 +37,7 @@ function Popular() {
 
   return (
     <div className="popular-stations">
+      {isLoading && <Loader />}
       {data.map((station) => (
         <Card key={station.id} station={station} />
       ))}

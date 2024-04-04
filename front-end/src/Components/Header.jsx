@@ -1,10 +1,11 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../styles/header.css";
 import { useEffect, useState } from "react";
 
 function Header() {
   const [nav, setNav] = useState(false);
   const [guest, setGuest] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem("user_id");
@@ -15,16 +16,15 @@ function Header() {
   const handleLogout = () => {
     window.localStorage.clear();
     setGuest(!guest);
+    setTimeout(() => navigate("/login"), 2000);
   };
   const location = useLocation();
   const { pathname } = location;
 
-  // Check if the current location is /login or /signup
   const hideHeader = pathname === "/login" || pathname === "/signup";
 
-  // Render the header conditionally
   if (hideHeader) {
-    return null; // Don't render the header
+    return null;
   }
   return (
     <header className="header flex-items ">

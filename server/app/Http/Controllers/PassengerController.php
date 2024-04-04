@@ -13,6 +13,12 @@ class PassengerController extends Controller
         return response()->json($passengers);
     }
 
+    public function count_passengers()
+    {
+        $passengerCount = Passenger::count();
+        return response()->json(['count' => $passengerCount]);
+    }
+
     public function get_passenger_by_id(Request $req)
     {
         $passenger = Passenger::find($req->id);

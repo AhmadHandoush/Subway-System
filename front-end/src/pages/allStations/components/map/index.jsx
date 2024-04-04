@@ -26,8 +26,8 @@ const Map = ({stations}) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {stations.map(station => (
-        <Marker key={station.id} position={[station.longitude, station.latitude]} icon={customIcon}>
-          <Popup>{station.name}</Popup>
+        <Marker key={station.id} position={[station.latitude, station.longitude]} icon={customIcon}>
+          <Popup>{station.name} Station</Popup>
         </Marker>
         ))}
       </MapContainer>

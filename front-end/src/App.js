@@ -13,6 +13,9 @@ import Chat from "./pages/Manager/Chat";
 import Station from "./pages/Manager/Station";
 import AStation from "./pages/aStation"
 import AllRides from "./pages/allRides";
+import Admin from "./pages/Admin";
+import Branches from "./pages/Admin/Branches"
+import Dashboard from "./pages/Admin/Dashboard";
 
 function App() {
   return (
@@ -35,6 +38,10 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/admin" element={<Admin />}>
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/branches" element={<Branches />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

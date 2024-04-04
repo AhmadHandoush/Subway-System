@@ -5,6 +5,27 @@ function Info({ data, setOpen, setOverlay }) {
   const [balance, setBalance] = useState(null);
 
   const [id, setId] = useState(window.localStorage.getItem("user_id"));
+  const [passengerId, setPassengerId] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchPassengerId = async () => {
+      try {
+        const response = await fetch(`/api/passenger-id/${id}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch passenger ID");
+        }
+        const data = await response.json();
+        setPassengerId(data.passenger_id);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPassengerId();
+  }, [id]);
 
   useEffect(() => {
     const fetchBalanceData = async () => {
@@ -23,6 +44,7 @@ function Info({ data, setOpen, setOverlay }) {
     };
     fetchBalanceData();
   }, [id]);
+  console.log(passengerId);
 
   return (
     <div className="user-info">

@@ -3,7 +3,10 @@ function Card({ station }) {
   return (
     <div className="card">
       <div className="station-image">
-        <img src={image} alt="station" />
+        <img
+          src="/360_F_220340016_85wy33BKA0L0N9bXFlMFeTqro6OHcsja.jpg"
+          alt="station"
+        />
       </div>
 
       <h3>{name}</h3>

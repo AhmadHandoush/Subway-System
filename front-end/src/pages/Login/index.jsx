@@ -85,6 +85,9 @@ function Login() {
           </div>
           <div className="submit flex column">
             <button type="submite">Login</button>
+            <h6>
+              <Link to={"/"}>Enter as a guest!</Link>
+            </h6>
           </div>
           {error && <small className="error">Credentials Errors!</small>}
         </form>

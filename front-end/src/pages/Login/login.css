@@ -68,6 +68,12 @@ body {
 .error {
   color: red;
 }
+h6 {
+  margin-top: 20px;
+}
+h6 a {
+  text-decoration: underline;
+}
 .login .overlay {
   position: absolute;
   left: 0;

@@ -32,7 +32,7 @@ const RideSearchBar = () => {
   return (
     <div className="ride-search flex around">
       <div className="without-btn flex column center">
-        <input type="text" />
+        <input type="text" placeholder="looking for rides"/>
         <div className="selects full-width flex evenly">
           <div className="flex center">
             <label htmlFor="departure-time">Departure</label>

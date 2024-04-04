@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import L from 'leaflet'
 
 
-const Map = ({handleMapClick,stations}) => {
+const Map = ({stations}) => {
   
 
     const customIcon = L.icon({
@@ -19,7 +19,7 @@ const Map = ({handleMapClick,stations}) => {
       <MapContainer
         center={[33.8547, 35.8623]}
         zoom={9}
-        onClick={handleMapClick}
+        
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

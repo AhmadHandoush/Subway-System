@@ -87,4 +87,25 @@ class ManagerController extends Controller
             'ride' => $ride
         ], 200);
     }
+
+    public function get_station_reviews(Request $req)
+    {
+        $station = Station::where('manager_id', $req->manager_id)->first();
+
+        if (!$station) {
+            return response()->json(['error' => 'Station not found'], 404);
+        }
+
+        $rides = $station->departureSchedules;
+        $rideReviews = [];
+        foreach ($rides as $ride) {
+            $reviews = $ride->rideReviews;
+            $rideReviews[$ride->id] = $reviews;
+        }
+
+        return response()->json([
+            "message" => "station rides and reviews found successfully",
+            "ride_reviews" => $rideReviews
+        ], 200);
+    }
 }

@@ -17,6 +17,11 @@ class StationController extends Controller
         $active_stations = Station::where('status', "Active")->get();
         return response()->json($active_stations);
     }
+    public function count_active_stations()
+    {
+        $count = Station::where('status', "Active")->count();
+        return response()->json(['count' => $count]);
+    }
 
     public function get_three()
     {
@@ -61,7 +66,7 @@ class StationController extends Controller
         }
         $station->delete();
         return response()->json([
-            "message" => "deleted successfully"
+            "message" => "deleted successfully",
         ], 200);
     }
 

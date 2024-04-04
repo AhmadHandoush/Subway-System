@@ -38,7 +38,10 @@ class UserController extends Controller
 
 
 
-        return response()->json(['message' => 'User created successfully'], 201);
+        return response()->json([
+            'message' => 'User created successfully',
+            $user,
+    ], 201);
     }
     public function getUser($id)
     {

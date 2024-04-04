@@ -41,7 +41,7 @@ Route::post('update_station', [ManagerController::class, "update_station_info"])
 Route::post('create_ride', [ManagerController::class, "create_ride"]);
 Route::post('update_ride', [ManagerController::class, "update_ride"]);
 Route::get('get_passengers', [PassengerController::class, "get_all_passengers"]);
-Route::post('get_passenger', [PassengerController::class, "get_passenger_by_id"]);
+Route::post('get_passenger/{id}', [PassengerController::class, "get_passenger_by_id"]);
 Route::get('get_rides', [RideController::class, "get_all_rides"]);
 Route::get('/users/{id}', [UserController::class, 'getUser']);
 Route::post('update/{id}', [UserController::class, 'updateUser']);
@@ -51,4 +51,6 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('request_coins', [CoinController::class, 'requestcoins']);
 Route::get('get_three', [StationController::class, 'get_three']);
 Route::post('get_station_rides', [RideController::class, "get_station_rides"]);
+Route::get('/passenger-id/{userId}', [PassengerController::class, 'getPassengerId']);
+
 

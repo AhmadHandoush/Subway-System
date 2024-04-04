@@ -232,3 +232,19 @@ body {
 .success h3 {
   color: rgba(0, 120, 0);
 }
+
+@media only screen and (max-width: 767px) {
+  .profile .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .profile .container .left {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .profile .right {
+    width: 100%;
+    display: block;
+  }
+}

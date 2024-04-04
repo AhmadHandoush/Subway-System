@@ -27,7 +27,13 @@ class UserController extends Controller
         $user->longitude = $validatedData['longitude'];
         $user->password = bcrypt($validatedData['password']);
         $user->save();
-        
+        $passenger = new Passenger([
+            'user_id' => $user->id,
+
+
+        ]);
+        $passenger->save();
+
 
 
 

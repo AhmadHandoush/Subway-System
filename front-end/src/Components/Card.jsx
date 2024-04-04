@@ -3,7 +3,7 @@ function Card({ station }) {
   return (
     <div className="card">
       <div className="station-image">
-        <img src={image} alt="station" />
+        <img src={`/${image}`} alt="station" />
       </div>
 
       <h3>{name}</h3>

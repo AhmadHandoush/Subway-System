@@ -61,7 +61,7 @@ class StationController extends Controller
         }
         $station->delete();
         return response()->json([
-            "message" => "deleted successfully"
+            "message" => "deleted successfully",
         ], 200);
     }
 

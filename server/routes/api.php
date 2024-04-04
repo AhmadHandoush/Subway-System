@@ -51,5 +51,9 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/request_coins', [CoinController::class, 'requestcoins']);
 Route::get('/get_three', [StationController::class, 'get_three']);
 
+Route::get('coin_requests', [CoinController::class, 'get_requestcoins']);
+Route::post('accept_request', [CoinController::class, 'accept_requestcoin']);
+Route::post('reject_request', [CoinController::class, 'reject_requestcoin']);
+
 Route::post('get_station_rides', [RideController::class, "get_station_rides"]);
 

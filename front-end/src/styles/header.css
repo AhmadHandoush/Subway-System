@@ -109,18 +109,39 @@ nav button a {
 .nav {
   gap: 20px;
   align-items: center;
+  transition: 0.3s;
 }
-
+header .menu {
+  display: none;
+}
+.disable {
+  pointer-events: none;
+}
 @media only screen and (max-width: 767px) {
   header nav {
-    top: 50%;
-    position: absolute;
-    left: 50%;
-    /* 
-    transform: translate(-50%, -50%); */
     flex-direction: column;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    transform: translateX(-50%);
+    background-color: white;
+
+    left: 50%;
+    top: -100rem;
+    z-index: 19999;
+    padding: 20px;
+    border-radius: 6px;
   }
   nav ul {
     flex-direction: column;
+  }
+  header .menu {
+    display: block;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .open {
+    top: 10rem;
   }
 }

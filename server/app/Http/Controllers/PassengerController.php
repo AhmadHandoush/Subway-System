@@ -26,7 +26,7 @@ class PassengerController extends Controller
             return response()->json(['error' => 'User balance not found'], 404);
         }
 
-        return response()->json(['user_id' => $userBalance->user_id, 'balance' => $userBalance->balance]);
+        return response()->json(['balance' => $userBalance->balance]);
     }
 
 }

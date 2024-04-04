@@ -110,3 +110,17 @@ nav button a {
   gap: 20px;
   align-items: center;
 }
+
+@media only screen and (max-width: 767px) {
+  header nav {
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    /* 
+    transform: translate(-50%, -50%); */
+    flex-direction: column;
+  }
+  nav ul {
+    flex-direction: column;
+  }
+}

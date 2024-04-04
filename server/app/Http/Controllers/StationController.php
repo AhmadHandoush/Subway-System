@@ -25,7 +25,7 @@ class StationController extends Controller
 
     public function get_three()
     {
-       
+
         $stations = Station::limit(3)->get();
 
         return response()->json(['stations' => $stations], 200);
@@ -79,7 +79,7 @@ class StationController extends Controller
         $station->update([
             'status' => 'Inactive',
         ]);
-    
+
         return response()->json([
             'message' => 'station shuttdown successfully',
             'station' => $station,
@@ -97,7 +97,7 @@ class StationController extends Controller
         ]);*/
         $station->status = 'Active';
         $station->save();
-    
+
         return response()->json([
             'message' => 'station activated successfully',
             'station' => $station,

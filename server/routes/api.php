@@ -46,22 +46,35 @@ Route::post('update_ride', [ManagerController::class, "update_ride"]);
 Route::post('get_station_reviews', [ManagerController::class, "get_station_reviews"]);
 
 Route::get('get_passengers', [PassengerController::class, "get_all_passengers"]);
+
+Route::post('get_passenger/{id}', [PassengerController::class, "get_passenger_by_id"]);
+Route::get('get_rides', [RideController::class, "get_all_rides"]);
+Route::get('/users/{id}', [UserController::class, 'getUser']);
+Route::post('update/{id}', [UserController::class, 'updateUser']);
+Route::get('user/balance/{id}', [PassengerController::class, 'getUserBalance']);
+Route::post('add_user', [UserController::class,"store"]);
+Route::post('login', [LoginController::class, 'login']);
+Route::post('request_coins', [CoinController::class, 'requestcoins']);
+Route::get('get_three', [StationController::class, 'get_three']);
+Route::post('get_station_rides', [RideController::class, "get_station_rides"]);
+Route::get('/passenger-id/{userId}', [PassengerController::class, 'getPassengerId']);
+
+
 Route::get('count_passengers', [PassengerController::class, "count_passengers"]);
 Route::post('get_passenger', [PassengerController::class, "get_passenger_by_id"]);
 
-Route::get('get_rides', [RideController::class, "get_all_rides"]);
-Route::get('/users/{id}', [UserController::class, 'getUser']);
-Route::post('/users/{id}/update', [UserController::class, 'updateUser']);
-Route::get('/user/{id}/balance', [PassengerController::class, 'getUserBalance']);
-Route::post('/add_user', [UserController::class,"store"]);
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/request_coins', [CoinController::class, 'requestcoins']);
-Route::get('/get_three', [StationController::class, 'get_three']);
+
+
+
+
+
+
 
 Route::get('coin_requests', [CoinController::class, 'get_requestcoins']);
 Route::post('accept_request', [CoinController::class, 'accept_requestcoin']);
 Route::post('reject_request', [CoinController::class, 'reject_requestcoin']);
 
 Route::post('add_station', [AdminController::class, 'addStation']);
+
 
 Route::post('get_station_rides', [RideController::class, "get_station_rides"]);

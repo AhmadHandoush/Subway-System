@@ -1,43 +1,16 @@
 import { useEffect, useState } from "react";
 import Card from "../../../Components/Card";
-
-// { id: 1, name: "ahmad", image: "ahmad", close: "12" },
-// { id: 2, name: "ahmad", image: "ahmad", close: "12" },
-// { id: 3, name: "ahmad", image: "ahmad", close: "12" },
+import "aos/dist/aos.css";
+import AOS from "aos";
+import Loader from "../../../Components/Loader";
 function Popular() {
-  // const arr = [
-  //   {
-  //     id: 1,
-  //     name: "beirut",
-  //     image: "/brussels metro.jpg",
-  //     open_at: "18",
-  //     close_at: "22",
-  //     location: "lebanon",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "saida",
-  //     image: "/brussels metro.jpg",
-  //     open_at: "18",
-  //     close_at: "22",
-  //     location: "paris",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "tripoli",
-  //     image: "/brussels metro.jpg",
-  //     open_at: "18",
-  //     close_at: "22",
-  //     location: "lebanon",
-  //   },
-  // ];
-
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch("http://127.0.0.1:8000/api/get_three");
 
@@ -48,6 +21,7 @@ function Popular() {
         const jsonData = await response.json();
 
         setData(jsonData.stations);
+        setIsLoading(false);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -57,20 +31,16 @@ function Popular() {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
 
   return (
     <div className="popular-stations">
+      {isLoading && <Loader />}
       {data.map((station) => (
         <Card key={station.id} station={station} />
       ))}
-      {/* {stations.map((station) => (
-        <div key={station.id}>
-          <div>{station.name}</div>
-          <div>{station.image}</div>
-          <div>{station.close}</div>
-        </div>
-      ))} */}
-      {/* {console.log(stations)} */}
     </div>
   );
 }

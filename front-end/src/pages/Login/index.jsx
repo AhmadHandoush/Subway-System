@@ -31,10 +31,7 @@ function Login() {
       }
 
       const responseData = await response.json();
-      window.localStorage.setItem(
-        "user_id",
-        JSON.stringify(responseData[0].id)
-      );
+      localStorage.setItem("user_id", JSON.stringify(responseData[0].id));
       if (responseData[0].role === "passenger") {
         navigate("/");
       }
@@ -64,7 +61,7 @@ function Login() {
 
           <div className="input">
             <span className="flex-center">
-              <i class="fa-solid fa-envelope"></i>
+              <i className="fa-solid fa-envelope"></i>
             </span>
             <input
               type="text"
@@ -78,7 +75,7 @@ function Login() {
           <label>Password</label>
           <div className="input">
             <span className="flex-center">
-              <i class="fa-solid fa-lock"></i>
+              <i className="fa-solid fa-lock"></i>
             </span>
             <input
               type="password"

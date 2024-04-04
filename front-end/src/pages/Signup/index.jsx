@@ -29,7 +29,7 @@ function MyComponent() {
   getLocation();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -64,7 +64,7 @@ function MyComponent() {
           <label>Name</label>
           <div className="input">
             <span className="flex-center">
-              <i class="fa-solid fa-user"></i>
+              <i className="fa-solid fa-user"></i>
             </span>
             <input
               type="text"
@@ -77,7 +77,7 @@ function MyComponent() {
           <label>Email</label>
           <div className="input">
             <span className="flex-center">
-              <i class="fa-solid fa-envelope"></i>
+              <i className="fa-solid fa-envelope"></i>
             </span>
             <input
               type="email"
@@ -91,7 +91,7 @@ function MyComponent() {
           <div className="input">
             <span className="flex-center">
               {" "}
-              <i class="fa-solid fa-lock"></i>
+              <i className="fa-solid fa-lock"></i>
             </span>
             <input
               type="password"

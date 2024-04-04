@@ -7,12 +7,20 @@ function Header() {
   const [guest, setGuest] = useState(false);
   const navigate = useNavigate();
 
+  const userId = localStorage.getItem("user_id");
+
   useEffect(() => {
-    const userId = localStorage.getItem("user_id");
+    // console.log(userId !== undefined);
+    // console.log(userId !== "");
     if (!userId) {
       setGuest(true);
+    } else {
+      setGuest(false);
     }
-  }, []);
+  }, [userId]);
+  useEffect(() => {
+    console.log(guest);
+  }, [guest]);
   const handleLogout = () => {
     window.localStorage.clear();
     setGuest(!guest);
@@ -47,17 +55,17 @@ function Header() {
               <NavLink to={"/profile"}>Profile</NavLink>
             </li>
           </ul>
-          {guest ? (
-            <button className="btn-login">
-              <Link to={"/login"}>Login</Link>
-            </button>
-          ) : (
+          {!guest ? (
             <button className="btn-logout" onClick={handleLogout}>
               Logout
             </button>
+          ) : (
+            <button className="btn-login">
+              <Link to={"/login"}>Login</Link>
+            </button>
           )}
         </nav>
-        <i class="menu fa-solid fa-bars" onClick={() => setNav(!nav)}></i>
+        <i className="menu fa-solid fa-bars" onClick={() => setNav(!nav)}></i>
       </div>
     </header>
   );

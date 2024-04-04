@@ -9,14 +9,14 @@ class CoinController extends Controller
 {
     public function requestcoins(Request $request){
         $validatedData = $request->validate([
-            // 'passenger_id' => 'required|exists:passengers,id',
+            'passenger_id' => 'required|exists:passengers,id',
             'amount' => 'required|numeric|min:0',
         ]);
 
 
         $payment = new CoinRequest();
-        $payment->passenger_id ='passenger_id';
-        $payment->amount = $validatedData['amount'];
+        $payment->passenger_id =$request->passenger_id;
+        $payment->amount = $request->amount;
         $payment->save();
 
         return response()->json(['message' => 'request sent  successfully'], 201);

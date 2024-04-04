@@ -66,7 +66,7 @@ body {
 }
 .profile {
   height: 100vh;
-  /* position: relative; */
+  position: relative;
 }
 .imagess {
   width: 100%;

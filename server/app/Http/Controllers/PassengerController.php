@@ -30,15 +30,15 @@ class PassengerController extends Controller
     }
     public function getPassengerId($userId)
     {
-        // Retrieve the passenger ID for the specific user
+
         $passengerId = Passenger::where('user_id', $userId)->value('id');
 
-        // Check if a passenger ID was found
+
         if ($passengerId !== null) {
-            // Passenger ID found for the specific user
+
             return response()->json(['passenger_id' => $passengerId], 200);
         } else {
-            // Passenger ID not found for the specific user
+
             return response()->json(['error' => 'Passenger ID not found for the specified user'], 404);
         }
     }

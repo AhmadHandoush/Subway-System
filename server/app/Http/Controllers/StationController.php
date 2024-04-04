@@ -19,7 +19,7 @@ class StationController extends Controller
     }
     public function get_three()
     {
-        // Retrieve three stations from the stations table
+       
         $stations = Station::limit(3)->get();
 
         return response()->json(['stations' => $stations], 200);

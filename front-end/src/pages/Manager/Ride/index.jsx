@@ -3,12 +3,56 @@ import "./index.css";
 import RideCard from "../../../Components/rideCard";
 import { FaPen } from "react-icons/fa";
 import Title from "../../Home/components/Title";
+import { axios } from "axios";
+
+
+
 const Ride = () => {
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
   const [arrivalStation, setArrivalStation] = useState("");
 
-  const handleRideUpdate = () => {};
+
+  const [userId,setUserID] = username("")
+  const [managerId,setManagerID] = username("")
+  const user = JSON.parse(localStorage.getItem('user'))
+  setUserID(user.id)
+    
+
+  const getManagerId = () => { 
+    axios(
+      {
+        url: `http://127.0.0.1:8000/api/get_manager/${userId}`,
+        method: "get",
+      }
+      ).then((res)=>{
+        setManagerID(res.data.id)
+      })
+    }
+    
+      useEffect(() => {
+        getManagerId();
+        getRides()
+      }, [])
+
+  const handleRideUpdate = () => {
+    const data= new FormData()
+    data.append('departure',departure)
+    data.append('arrival',arrival)
+    data.append('arrival_station',arrivalStation)
+
+    axios(
+      {
+        url: `http://127.0.0.1:8000/api/update_ride/${userId}`,
+        method: "post",
+        data: data,
+  }
+    ).then((res)=>{
+      console.log(res)
+    })
+  }
+
+
 
   const times = [
     "1:00",

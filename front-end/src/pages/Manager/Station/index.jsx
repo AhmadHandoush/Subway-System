@@ -1,19 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
 import ReviewCard from "../../../Components/reviewCard/reviewCard";
 import { FaPen } from "react-icons/fa";
 import Title from "../../Home/components/Title";
+import axios from "axios";
 
 
 const Station = () => {
-
   const [stationStatus, setStationStatus] = useState("");
   const [stationOpen, setStationOpen] = useState("");
   const [stationClose, setStationClose] = useState("");
 
+  const [userId,setUserID] = username("")
+  const [managerId,setManagerID] = username("")
+  const user = JSON.parse(localStorage.getItem('user'))
+  setUserID(user.id)
+    
+
+  const getManagerId = () => { 
+    axios(
+      {
+        url: `http://127.0.0.1:8000/api/get_manager/${userId}`,
+        method: "get",
+      }
+      ).then((res)=>{
+        setManagerID(res.data.id)
+      })
+    }
+    
+      useEffect(() => {
+        getManagerId()
+      }, [])
+    
+
   const times=['1:00','2:00','3:00','4:00','5:00','6:00','7:00','8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','00:00']
 
-  const handleStationUpdate = () => {};
+  const handleStationUpdate = () => {
+    const data= new FormData()
+    data.append('status',stationStatus)
+    data.append('open_hour',stationOpen)
+    data.append('close_hour',stationClose)
+
+    axios(
+      {
+        url: `http://127.0.0.1:8000/api/update_station/${managerId}`,
+        method: "post",
+        data: data
+        ,
+      }
+      ).then((res)=>{
+        console.log(res)
+      })
+  };
 
   return (
     <div className="station flex center column full-width">

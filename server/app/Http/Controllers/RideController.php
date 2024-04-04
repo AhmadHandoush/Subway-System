@@ -32,4 +32,19 @@ class RideController extends Controller
             "rides" => $rides
         ], 200);
     }
+    public function get_departing_rides(Request $req)
+    {
+        $station = Station::with('departureSchedules')
+            ->find($req->id);
+
+        if (!$station) {
+            return response()->json(['error' => 'Station not found'], 404);
+        }
+
+        $rides = $station->departureSchedules;
+        return response()->json([
+            "message" => "station rides found successfully",
+            "rides" => $rides
+        ], 200);
+    }
 }

@@ -39,11 +39,12 @@ Route::post('remove_station', [StationController::class, "remove_station"]);
 Route::post('shutdown_station', [StationController::class, "shutdown_station"]);
 Route::post('activate_station', [StationController::class, "activate_station"]);
 
-Route::post('get_manager_station', [ManagerController::class, "get_manager_station"]);
-Route::post('update_station', [ManagerController::class, "update_station_info"]);
+Route::post('get_manager_station/{manager_id}', [ManagerController::class, "get_manager_station"]);
+Route::post('update_station/{manager_id}', [ManagerController::class, "update_station_info"]);
 Route::post('create_ride', [ManagerController::class, "create_ride"]);
-Route::post('update_ride', [ManagerController::class, "update_ride"]);
+Route::post('update_ride/{id}', [ManagerController::class, "update_ride"]);
 Route::post('get_station_reviews', [ManagerController::class, "get_station_reviews"]);
+Route::post('get_manager/{user_id}', [ManagerController::class, "get_manager"]);
 
 Route::get('get_passengers', [PassengerController::class, "get_all_passengers"]);
 Route::get('count_passengers', [PassengerController::class, "count_passengers"]);
@@ -64,4 +65,5 @@ Route::post('reject_request', [CoinController::class, 'reject_requestcoin']);
 
 Route::post('add_station', [AdminController::class, 'addStation']);
 
-Route::post('get_station_rides', [RideController::class, "get_station_rides"]);
+Route::post('get_station_rides{id}', [RideController::class, "get_station_rides"]);
+Route::post('get_departing_rides/{id}', [RideController::class, "get_departing_rides"]);

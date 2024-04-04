@@ -5,11 +5,28 @@ import { Link, useNavigate } from "react-router-dom";
 
 function MyComponent() {
   const navigate = useNavigate();
+  window.localStorage.clear();
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
+    latitude: "",
+    longitude: "",
   });
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setFormData({
+          ...formData,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  };
+  getLocation();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,7 +36,7 @@ function MyComponent() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/register", {
+      const response = await fetch("http://127.0.0.1:8000/api/add_user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,9 +68,9 @@ function MyComponent() {
             </span>
             <input
               type="text"
-              name="username"
+              name="name"
               placeholder="Username"
-              value={formData.username}
+              value={formData.name}
               onChange={handleChange}
             />
           </div>
@@ -83,6 +100,8 @@ function MyComponent() {
               value={formData.password}
               onChange={handleChange}
             />
+            <input type="hidden" name="latitude" value={formData.latitude} />
+            <input type="hidden" name="longitude" value={formData.longitude} />
           </div>
           <div className="flex-center">
             <button type="submit">Submit</button>

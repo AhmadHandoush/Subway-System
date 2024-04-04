@@ -1,12 +1,17 @@
 <?php
 
-use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CoinController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\RideController;
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+
 use App\Http\Controllers\ManagerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +43,13 @@ Route::post('update_ride', [ManagerController::class, "update_ride"]);
 Route::get('get_passengers', [PassengerController::class, "get_all_passengers"]);
 Route::post('get_passenger', [PassengerController::class, "get_passenger_by_id"]);
 Route::get('get_rides', [RideController::class, "get_all_rides"]);
+Route::get('/users/{id}', [UserController::class, 'getUser']);
+Route::post('/users/{id}/update', [UserController::class, 'updateUser']);
+Route::get('/user/{id}/balance', [PassengerController::class, 'getUserBalance']);
+Route::post('/add_user', [UserController::class,"store"]);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/request_coins', [CoinController::class, 'requestcoins']);
+Route::get('/get_three', [StationController::class, 'get_three']);
+
 Route::post('get_station_rides', [RideController::class, "get_station_rides"]);
-Route::post('message', [ChatController::class, "message"]);
+

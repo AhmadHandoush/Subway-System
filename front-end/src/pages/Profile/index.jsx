@@ -1,12 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./profile.css";
 import Editbox from "./components/Editbox";
 import Requestcoins from "./components/Requestcoins";
+import Info from "./components/Info";
 
 function Profile() {
   const [open, setOpen] = useState(false);
   const [overlay, setOverlay] = useState(false);
   const [request, setRequest] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [id, setId] = useState(window.localStorage.getItem("user_id"));
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch data from the API
+        const response = await fetch(`http://127.0.0.1:8000/api/users/${id}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   const handleRequest = () => {
     setRequest(!request);
   };
@@ -23,40 +57,12 @@ function Profile() {
               />
             </div>
           </div>
-          <div className="user-info">
-            <div className="user-details flex column">
-              <div className="username flex-between flex-items">
-                <h2>Username:</h2>
-                <p>Ahmad Handoush</p>
-              </div>
-              <div className="email flex-between flex-items">
-                <h2>Email:</h2>
-                <p>ahmad@gmail.com</p>
-              </div>
-              <div className="address flex-between flex-items">
-                <h2>Address:</h2>
-                <p>Beirut</p>
-              </div>
-              <div className="username flex-between flex-items">
-                <h2>Balance:</h2>
-                <p>200</p>
-              </div>
-              <button
-                className=" edit flex-center"
-                onClick={() => {
-                  setOpen(true);
-                  setOverlay(true);
-                }}
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-            </div>
-          </div>
+          <Info data={data} setOpen={setOpen} setOverlay={setOverlay} />
           <div className="coins">
             <button className="btn_request" onClick={handleRequest}>
               Request Coins
             </button>
-            {request && <Requestcoins />}
+            {request && <Requestcoins setRequest={setRequest} />}
           </div>
         </div>
         <div className="right flex column">

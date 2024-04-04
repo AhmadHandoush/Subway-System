@@ -17,6 +17,16 @@ class StationController extends Controller
         $active_stations = Station::where('status', "Active")->get();
         return response()->json($active_stations);
     }
+
+    public function get_three()
+    {
+       
+        $stations = Station::limit(3)->get();
+
+        return response()->json(['stations' => $stations], 200);
+    }
+
+
     public function get_departure_schedules(Request $req)
     {
         $station = Station::with('departureSchedules', 'departureSchedules.arrivalStation')
@@ -88,4 +98,5 @@ class StationController extends Controller
             'station' => $station,
         ], 200);
     }
+
 }

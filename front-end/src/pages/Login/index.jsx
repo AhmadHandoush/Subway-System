@@ -10,10 +10,10 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,12 +31,16 @@ function Login() {
       }
 
       const responseData = await response.json();
-      if (responseData.user.role === "passenger") {
+      window.localStorage.setItem(
+        "user_id",
+        JSON.stringify(responseData[0].id)
+      );
+      if (responseData[0].role === "passenger") {
         navigate("/");
       }
-      console.log("Response from server:", responseData);
     } catch (error) {
       console.error("Error:", error);
+      setError(true);
     }
   };
 
@@ -79,9 +83,10 @@ function Login() {
               required
             />
           </div>
-          <div className="submit flex-center">
-            <button type="submit">Login</button>
+          <div className="submit flex column">
+            <button type="submite">Login</button>
           </div>
+          {error && <small className="error">Credentials Errors!</small>}
         </form>
         <p>
           Don't have an account?{" "}

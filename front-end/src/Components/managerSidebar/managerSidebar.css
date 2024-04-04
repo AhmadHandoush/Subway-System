@@ -1,0 +1,19 @@
+.nav {
+  gap: 20px;
+  align-items: center;
+}
+
+.sidebar {
+  border-radius: 10px;
+  width: 200px;
+  height: 700px;
+  background-color: #d9d9d9;
+  padding: 30px;
+  margin: 20px;
+}
+
+.manager-nav ul li a.active {
+  background-color: #0066b2;
+  color: white;
+  box-shadow: none;
+}

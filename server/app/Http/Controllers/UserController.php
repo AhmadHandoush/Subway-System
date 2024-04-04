@@ -27,6 +27,16 @@ class UserController extends Controller
         $user->longitude = $validatedData['longitude'];
         $user->password = bcrypt($validatedData['password']);
         $user->save();
+        $passenger = new Passenger([
+            'user_id' => $user->id,
+
+
+        ]);
+        $passenger->save();
+
+
+
+
 
         return response()->json([
             'message' => 'User created successfully',
@@ -55,6 +65,6 @@ class UserController extends Controller
 
         return response()->json($user);
     }
-   
+
 
 }

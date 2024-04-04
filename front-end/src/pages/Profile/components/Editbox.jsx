@@ -1,27 +1,18 @@
 import { useState } from "react";
 
 function Editbox({ setOpen, setOverlay }) {
+  const [id, setId] = useState(window.localStorage.getItem("user_id"));
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    image: null,
-    address: "",
+    name: "",
+    image: "",
   });
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-
-    if (name === "image") {
-      setFormData({
-        ...formData,
-        image: files[0],
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleClose = () => {
@@ -32,7 +23,7 @@ function Editbox({ setOpen, setOverlay }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://api.example.com/update-profile", {
+      const response = await fetch(`http://127.0.0.1:8000/api/update/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,6 +36,7 @@ function Editbox({ setOpen, setOverlay }) {
       }
 
       console.log("Profile updated successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error updating profile:", error.message);
     }
@@ -62,22 +54,18 @@ function Editbox({ setOpen, setOverlay }) {
         <input
           type="text"
           placeholder="Username..."
-          value={formData.username}
+          name="name"
+          value={formData.name}
           onChange={handleChange}
         />
+
         <input
           type="text"
-          placeholder="Adress..."
-          value={formData.address}
+          accept="image/*"
           onChange={handleChange}
+          placeholder="Enter ur image "
+          name="image"
         />
-        <input
-          type="password"
-          placeholder="Password..."
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <input type="file" accept="image/*" onChange={handleChange} />
         <button type="submit">Edit</button>
       </form>
     </div>

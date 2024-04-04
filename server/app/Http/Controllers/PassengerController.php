@@ -32,7 +32,21 @@ class PassengerController extends Controller
             return response()->json(['error' => 'User balance not found'], 404);
         }
 
-        return response()->json(['user_id' => $userBalance->user_id, 'balance' => $userBalance->balance]);
+        return response()->json(['balance' => $userBalance->balance]);
+    }
+    public function getPassengerId($userId)
+    {
+
+        $passengerId = Passenger::where('user_id', $userId)->value('id');
+
+
+        if ($passengerId !== null) {
+
+            return response()->json(['passenger_id' => $passengerId], 200);
+        } else {
+
+            return response()->json(['error' => 'Passenger ID not found for the specified user'], 404);
+        }
     }
 
 }

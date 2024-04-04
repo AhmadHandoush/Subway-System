@@ -3,6 +3,7 @@ import "./profile.css";
 import Editbox from "./components/Editbox";
 import Requestcoins from "./components/Requestcoins";
 import Info from "./components/Info";
+import Loader from "../../Components/Loader";
 
 function Profile() {
   const [open, setOpen] = useState(false);
@@ -16,13 +17,13 @@ function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch data from the API
         const response = await fetch(`http://127.0.0.1:8000/api/users/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const jsonData = await response.json();
         setData(jsonData);
+        console.log(jsonData);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -32,9 +33,10 @@ function Profile() {
 
     fetchData();
   }, []);
+  console.log(data);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {

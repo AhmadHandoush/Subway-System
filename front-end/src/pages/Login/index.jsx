@@ -31,12 +31,15 @@ function Login() {
       }
 
       const responseData = await response.json();
-      window.localStorage.setItem(
-        "user_id",
-        JSON.stringify(responseData[0].id)
-      );
+      localStorage.setItem("user_id", JSON.stringify(responseData[0].id));
       if (responseData[0].role === "passenger") {
         navigate("/");
+      }
+      if (responseData[0].role === "manager") {
+        navigate("/Manager");
+      }
+      if (responseData[0].role === "admin") {
+        navigate("/admin");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -58,7 +61,7 @@ function Login() {
 
           <div className="input">
             <span className="flex-center">
-              <i class="fa-solid fa-envelope"></i>
+              <i className="fa-solid fa-envelope"></i>
             </span>
             <input
               type="text"
@@ -72,7 +75,7 @@ function Login() {
           <label>Password</label>
           <div className="input">
             <span className="flex-center">
-              <i class="fa-solid fa-lock"></i>
+              <i className="fa-solid fa-lock"></i>
             </span>
             <input
               type="password"
@@ -85,6 +88,9 @@ function Login() {
           </div>
           <div className="submit flex column">
             <button type="submite">Login</button>
+            <h6>
+              <Link to={"/"}>Enter as a guest!</Link>
+            </h6>
           </div>
           {error && <small className="error">Credentials Errors!</small>}
         </form>

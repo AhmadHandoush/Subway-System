@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function Hero() {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
   return (
     <section className="hero">
       <div className="overlay"></div>
-      <div className="content">
+      <div className="content" data-aos="fade-up">
         <h2>Experience Great & Enjoyable Trip Today</h2>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores sunt
-          laborum sed illo recusandae aut corporis fuga tempore temporibus
-          sequi.
+          We are the best in the Middle East, We provide the best services for
+          our passengers and we work for your comfort all the time. Trust us !
         </p>
         <button>
           <Link>

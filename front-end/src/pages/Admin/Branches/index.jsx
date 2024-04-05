@@ -3,6 +3,10 @@ import "./index.css";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
+import { RiShutDownLine } from "react-icons/ri";
+import { MdDelete } from "react-icons/md";
+import { FaArrowRotateLeft } from "react-icons/fa6";
+
 
 
 const Branches = () => {
@@ -120,14 +124,14 @@ const Branches = () => {
                 <td>
                   {station.status === 'Active' ? (
                     <>
-                      <button onClick={() => handleShutdown(station.id)}>Shutdown</button>
-                      <button onClick={() => handleRemoveStation(station.id)}>Remove</button>
+                      <button className="cancel-btn" onClick={() => handleShutdown(station.id)}><RiShutDownLine /></button>
+                      <button className="cancel-btn" onClick={() => handleRemoveStation(station.id)}><MdDelete /></button>
                     </>
                     
                   ) : (
                     <>
-                      <button onClick={() => handleActivate(station.id)}>Activate</button>
-                      <button onClick={() => handleRemoveStation(station.id)}>Remove</button>
+                      <button className="edit-btn" onClick={() => handleActivate(station.id)}><FaArrowRotateLeft /></button>
+                      <button className="cancel-btn" onClick={() => handleRemoveStation(station.id)}><MdDelete /></button>
                     </>
                   )}
                 </td>

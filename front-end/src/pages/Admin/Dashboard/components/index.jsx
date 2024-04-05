@@ -2,7 +2,7 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect } from "react";
 const StationCard = ({ station }) => {
-  const { name, image, open_hour, close_hour, location } = station;
+  const { name, image, open_hour, close_hour} = station;
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);

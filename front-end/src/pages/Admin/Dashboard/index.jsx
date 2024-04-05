@@ -11,8 +11,7 @@ const Dashboard = () => {
   const [nbrPassengers, setNbrPassengers] = useState(0);
   const [nbrActStations, setnbrActStations] = useState(0);
   const [activeStations, setActiveStations] = useState([]);
-
-  
+  const [depRideCount, setDepRideCount] = useState(0);
 
   useEffect(() => {
     getNbrPassengers();
@@ -25,6 +24,21 @@ const Dashboard = () => {
   useEffect(() => {
     getActStations();
   }, []);
+
+  /*useEffect(() => {
+    getDepRideCount();
+  }, []);*/
+
+  const getDepRideCount = async (id) => {
+    try {
+      const response = await axios.post(`http://127.0.0.1:8000/api/count_station_dep_rides`, { id });
+      if (response.data && response.data.departureRideCount) {
+        setDepRideCount(response.data.departureRideCount);
+      }
+    } catch (error) {
+      console.error('Error accepting coin request:', error);
+    }
+  };
 
   const getNbrPassengers = async () => {
     try {
@@ -93,7 +107,7 @@ const Dashboard = () => {
 
         <div className="analysis flex center">
           {activeStations.map(station => (
-            <StationCard key={station.id} station={station} />
+            <StationCard key={station.id} station={station} depRideCount={depRideCount} />
           ))}
         </div>
       </div>

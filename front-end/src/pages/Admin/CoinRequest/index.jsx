@@ -3,6 +3,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FcApprove, FcAcceptDatabase } from "react-icons/fc";
+import { IoCloseSharp } from "react-icons/io5";
 
 const CoinRequest = () => {
   const [coinRequests, setCoinRequests] = useState([]);
@@ -49,6 +51,7 @@ const CoinRequest = () => {
         <thead>
           <tr>
             <th>Passenger ID</th>
+            <th>Name</th>
             <th>Amount</th>
             <th>Status</th>
             <th>Balance</th>
@@ -66,8 +69,8 @@ const CoinRequest = () => {
               <td>
                 {request.status === 'Pending' && (
                   <>
-                    <button onClick={() => handleAccept(request.id)}>Accept</button>
-                    <button onClick={() => handleReject(request.id)}>Reject</button>
+                    <button className="edit-btn" onClick={() => handleAccept(request.id)}><FcAcceptDatabase /></button>
+                    <button className="cancel-btn" onClick={() => handleReject(request.id)}><IoCloseSharp /></button>
                   </>
                 )}
               </td>

@@ -32,4 +32,39 @@ class RideController extends Controller
             "rides" => $rides
         ], 200);
     }
+
+    public function count_station_arrival_rides(Request $req)
+    {
+        $station = Station::withCount('arrivalSchedules')
+                        ->find($req->id);
+
+        if (!$station) {
+            return response()->json(['error' => 'Station not found'], 404);
+        }
+
+        $arrivalRideCount = $station->getArrivalRideCountAttribute();
+
+        return response()->json([
+            "message" => "Station rides found successfully",
+            "arrivalRideCount" => $arrivalRideCount
+        ], 200);
+    }
+
+    public function count_station_dep_rides(Request $req)
+    {
+        $station = Station::withCount('departureSchedules')
+                        ->find($req->id);
+
+        if (!$station) {
+            return response()->json(['error' => 'Station not found'], 404);
+        }
+
+        $departureRideCount = $station->getDepartureRideCountAttribute();
+
+        return response()->json([
+            "message" => "Station rides found successfully",
+            "departureRideCount" => $departureRideCount
+        ], 200);
+    }
+
 }

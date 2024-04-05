@@ -34,4 +34,14 @@ class Station extends Model
     {
         return $this->hasMany(Ride::class, 'arrival_station_id');
     }
+
+    public function getDepartureRideCountAttribute()
+    {
+        return $this->departureSchedules()->count();
+    }
+
+    public function getArrivalRideCountAttribute()
+    {
+        return $this->arrivalSchedules()->count();
+    }
 }

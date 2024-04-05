@@ -26,8 +26,20 @@ class CoinController extends Controller
 
     public function get_requestcoins()
     {
-        $coinRequests = CoinRequest::where('status', "pending")->with('passenger')->get();
-        return response()->json($coinRequests);
+        $coinRequests = CoinRequest::where('status', 'pending')->with('passenger.user')->get();
+
+        $CoinRequests = $coinRequests->map(function ($coinRequest) {
+            return [
+                'id' => $coinRequest->id,
+                'amount' => $coinRequest->amount,
+                'status' => $coinRequest->status,
+                'passenger_id' => $coinRequest->passenger_id,
+                'passenger_name' => $coinRequest->passenger->user->name,
+                'balance' => $coinRequest->passenger->balance,
+            ];
+        });
+    
+        return response()->json($CoinRequests);
     }
 
     public function accept_requestcoin(Request $req)

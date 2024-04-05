@@ -42,7 +42,7 @@ const CoinRequest = () => {
   };
 
   return (
-    <div className="flex column admin">
+    <div className="flex column admin full-width">
       <ToastContainer position="top-right" autoClose={3000} />
       <h2>Coin Requests</h2>
       <table>

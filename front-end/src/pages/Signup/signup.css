@@ -147,3 +147,13 @@ form .submit {
   text-decoration: underline;
   color: black;
 }
+@media only screen and (max-width: 767px) {
+  .signup-card {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .signup-card {
+    width: 50%;
+  }
+}

@@ -12,6 +12,17 @@ class StationController extends Controller
         $stations = Station::all();
         return response()->json($stations);
     }
+    public function get_station(Request $request)
+    {
+       $station = Station::where("id", $request->id)->first();
+       if (!$station) {
+        return response()->json(["message"=> ""],404);
+       }
+       return response()->json($station);
+       }
+
+
+
     public function get_active_stations()
     {
         $active_stations = Station::where('status', "Active")->get();
@@ -25,7 +36,7 @@ class StationController extends Controller
 
     public function get_three()
     {
-       
+
         $stations = Station::limit(3)->get();
 
         return response()->json(['stations' => $stations], 200);
@@ -79,7 +90,7 @@ class StationController extends Controller
         $station->update([
             'status' => 'Inactive',
         ]);
-    
+
         return response()->json([
             'message' => 'station shuttdown successfully',
             'station' => $station,
@@ -97,7 +108,7 @@ class StationController extends Controller
         ]);*/
         $station->status = 'Active';
         $station->save();
-    
+
         return response()->json([
             'message' => 'station activated successfully',
             'station' => $station,

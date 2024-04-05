@@ -1,24 +1,28 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./index.css";
 import RideCard from "../../../Components/rideCard";
 import { FaPen } from "react-icons/fa";
 import Title from "../../Home/components/Title";
-import { axios } from "axios";
+import  axios  from "axios";
 
 
 
 const Ride = () => {
   const [departure, setDeparture] = useState("");
+  const [departures, setDepartures] = useState([]);
   const [arrival, setArrival] = useState("");
+  const [arrivals, setArrivals] = useState([]);
   const [arrivalStation, setArrivalStation] = useState("");
 
 
-  const [userId,setUserID] = username("")
-  const [managerId,setManagerID] = username("")
+  const [userId,setUserID] = useState("")
+  const [managerId,setManagerID] = useState("")
+  const [stationId,setStationID] = useState("")
   const user = JSON.parse(localStorage.getItem('user'))
   setUserID(user.id)
     
 
+  
   const getManagerId = () => { 
     axios(
       {
@@ -26,13 +30,56 @@ const Ride = () => {
         method: "get",
       }
       ).then((res)=>{
+      
         setManagerID(res.data.id)
       })
     }
+
+    const getStationId = () => {
+      axios(
+        {
+          url: `http://127.0.0.1:8000/api/get_manager_station/${managerId}`,
+          method: "get",
+        }
+        ).then((res)=>{
+          setStationID(res.data.id)
+        }
+        )
+    }
+          
+
+
+  const getDepartures = () => { 
+    axios(
+      {
+        url: `http://127.0.0.1:8000/api/get_departure_schedules/${stationId}`,
+        method: "get",
+      }
+      ).then((res)=>{
+        setDepartures(res.data)
+        console.log(res)
+      })
+    }
+
+
+    const getArrivals = () => { 
+      axios(
+        {
+          url: `http://127.0.0.1:8000/api/get_arrival_schedules/${stationId}`,
+          method: "get",
+        }
+        ).then((res)=>{
+          setArrivals(res.data)
+          console.log(res)
+        })
+      }
+
+
     
       useEffect(() => {
         getManagerId();
-        getRides()
+        getDepartures();
+        getArrivals();
       }, [])
 
   const handleRideUpdate = () => {
@@ -50,8 +97,9 @@ const Ride = () => {
     ).then((res)=>{
       console.log(res)
     })
-  }
 
+    
+  }
 
 
   const times = [
@@ -138,59 +186,30 @@ const Ride = () => {
             <div className="flex center">
               <h1 className="h1">Arriving</h1>
             </div>
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
+            {arrivals.map((arrival)=>(
+              <RideCard
+              departure={arrival.departure}
+              arrival={arrival.arrival}
+              rideId={arrival.id}
             />
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
-            />
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
-            />
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
-            />
+            ))
+            }
+
+
           </div>
           <div className="half-width arrive">
             <div className="flex center">
               <h1 className="h1">Departing</h1>
             </div>
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
-            />
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
-            />
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
-            />
-            <RideCard
-              departure="3:00"
-              arrival="4:00"
-              rideId="12"
-              imageSource="https://t3.ftcdn.net/jpg/01/63/18/74/360_F_163187413_bpwM2WLBT9VHKNY8bgbSemsmJvoVHFtj.webp"
-            />
+            {
+              departures.map((departure)=>(
+                <RideCard
+                departure={departure.departure}
+                arrival={departure.arrival}
+                rideId={departure.id}
+              />
+              ))
+            }
           </div>
         </div>
       </div>

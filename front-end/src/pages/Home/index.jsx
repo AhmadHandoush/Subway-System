@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 import Hero from "./components/Hero";
 import Popular from "./components/Popular";
 import Title from "./components/Title";
+import "aos/dist/aos.css";
+import AOS from "aos";
 import "./home.css";
+import { useEffect } from "react";
 
 function Home() {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
   return (
     <div className="home">
       <div className="container">
@@ -14,8 +20,8 @@ function Home() {
         <Title>Recommended Stations</Title>
         <Popular />
         <div className="go-stations">
-          <button className="to-stations">
-            <Link>
+          <button className="to-stations" data-aos="fade-left">
+            <Link to={"/allstations"}>
               View All stations<i class="fa-solid fa-arrow-right"></i>{" "}
             </Link>
           </button>

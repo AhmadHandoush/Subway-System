@@ -10,9 +10,10 @@ const Station = () => {
   const [stationStatus, setStationStatus] = useState("");
   const [stationOpen, setStationOpen] = useState("");
   const [stationClose, setStationClose] = useState("");
+  const [reviews, setReviews] = useState([]);
 
-  const [userId,setUserID] = username("")
-  const [managerId,setManagerID] = username("")
+  const [userId,setUserID] = useState("")
+  const [managerId,setManagerID] = useState("")
   const user = JSON.parse(localStorage.getItem('user'))
   setUserID(user.id)
     
@@ -27,9 +28,26 @@ const Station = () => {
         setManagerID(res.data.id)
       })
     }
+
+
+
+    const getReviews = () => {
+      axios(
+        {
+          url: `http://127.0.0.1:8000/api/get_station_reviews/${managerId}`,
+          method: "get",
+
+    }
+      ).then((res)=>{
+        console.log(res)
+      })
+    }
+
+
     
       useEffect(() => {
-        getManagerId()
+        getManagerId();
+        getReviews();
       }, [])
     
 
@@ -105,26 +123,14 @@ const Station = () => {
       <Title>Recent Reviews</Title>
 
         <div className="update-station bg-secondary full-width">
-          <ReviewCard
-            username="ALI"
-            reviewText="sfsfhhasfasdfhjajsd fjjfvjkjklvaklklaskklafv"
-          />
-          <ReviewCard
-            username="ALI"
-            reviewText="sfsfhhasfasdfhjajsdf jjfvjkjklvaklklaskklafv"
-          />
-          <ReviewCard
-            username="ALI"
-            reviewText="sfsfhhasf sfg sdf gdfgsd gdf gdfg dfgdfsg sdf gdf gddf gdf gdf d gdg df df asdfhjajsdfjjfvjkjklvaklklaskklafv"
-          />
-          <ReviewCard
-            username="ALI"
-            reviewText="sfsfhhasfasdfhjajsdf jjfvjkjklvaklklaskklafv"
-          />
-          <ReviewCard
-            username="ALI"
-            reviewText="sfsfhhasfasdfhjajsdfjjfv jkjklvaklklaskklafv"
-          />
+          {reviews.map((review) => (
+            <ReviewCard
+              key={review.id}
+              name={review.passenger_id}
+              rating={review.rating}
+              reviewText={review.content}
+            />
+          ))}
         </div>
       </div>
     </div>

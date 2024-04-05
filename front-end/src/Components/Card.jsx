@@ -9,7 +9,7 @@ function Card({ station }) {
 
 
   const handleClick = () => {
-    window.location.href = `/astation?id=${id}`;
+    window.location.href = `/astation/${id}`;
   };
 
   return (

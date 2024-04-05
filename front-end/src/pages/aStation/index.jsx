@@ -13,6 +13,7 @@ const AStation = () => {
 
   const { id } = useParams();
   console.log(id);
+  
 
   useEffect(() => {
     getStation();
@@ -23,7 +24,7 @@ const AStation = () => {
 
   const getStation = () => {
     axios({
-      url: `http://127.0.0.1:8000/api/get_station/${Id}`,
+      url: `http://127.0.0.1:8000/api/get_station/${id}`,
       method: "get",
     }).then((res) => {
       setStation(res.data);
@@ -33,7 +34,7 @@ const AStation = () => {
 
   const getDepartures = () => {
     axios({
-      url: `http://127.0.0.1:8000/api/get_departure_schedules/${Id}`,
+      url: `http://127.0.0.1:8000/api/get_departure_schedules/${id}`,
       method: "get",
     }).then((res) => {
       setDepartures(res.data);
@@ -43,7 +44,7 @@ const AStation = () => {
 
   const getArrivals = () => {
     axios({
-      url: `http://127.0.0.1:8000/api/get_arrival_schedules/${Id}`,
+      url: `http://127.0.0.1:8000/api/get_arrival_schedules/${id}`,
       method: "get",
     }).then((res) => {
       setArrivals(res.data);

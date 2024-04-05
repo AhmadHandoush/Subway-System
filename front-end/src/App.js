@@ -32,7 +32,7 @@ function App() {
           </Route>
           
           <Route path="/allrides" element={<AllRides />}></Route>
-          <Route path="/astation" element={<AStation />}></Route>
+          <Route path="/astation/:id" element={<AStation />}></Route>
           <Route path="/allStations" element={<All />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>

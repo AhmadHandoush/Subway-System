@@ -39,6 +39,7 @@ const Station = () => {
 
     }
       ).then((res)=>{
+        setReviews(res.data)  
         console.log(res)
       })
     }

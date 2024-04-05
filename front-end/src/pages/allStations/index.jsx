@@ -6,35 +6,33 @@ import Card from "../../Components/Card";
 import "./index.css";
 
 const All = () => {
-  const [allStations, setAllStations] = useState([])
+  const [allStations, setAllStations] = useState([]);
   const [Stations, setStations] = useState([]);
   const [searchTerms, setSearchTerms] = useState("");
 
-const getStations = ()=>{
-  axios({
-    url: "http://127.0.0.1:8000/api/get_stations",
-    method: "get",
-  }).then(function (res) {
-    console.log(res);
-    if (res.status == 200) {
-      setAllStations(res.data);
-      
-    }
-  });
-}
-
   useEffect(() => {
-    getStations()
+    getStations();
   }, []);
 
-const handleSearch = () => {
-  const search = allStations.filter(e =>
-    e.name.toLowerCase().includes(searchTerms.toLowerCase())
-  );
-  setStations(search);
-};
+  const getStations = () => {
+    axios({
+      url: "http://127.0.0.1:8000/api/get_stations",
+      method: "get",
+    }).then(function (res) {
+      console.log(res);
+      if (res.status == 200) {
+        setAllStations(res.data);
+        setStations(res.data);
+      }
+    });
+  };
 
-
+  const handleSearch = () => {
+    const search = allStations.filter((e) =>
+      e.name.toLowerCase().includes(searchTerms.toLowerCase())
+    );
+    setStations(search);
+  };
 
   return (
     <div className="flex all-stations center column full-width">

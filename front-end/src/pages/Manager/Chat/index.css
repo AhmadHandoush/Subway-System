@@ -1,0 +1,16 @@
+.chat{
+    width: 90%;
+    height: 800px;
+    box-sizing: border-box;
+    padding: 20px;
+    gap: 25px;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: scroll;
+    margin-bottom: 20px
+}
+
+.chat::-webkit-scrollbar{
+    display: none;
+}
+

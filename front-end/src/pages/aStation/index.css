@@ -1,0 +1,28 @@
+.station-info {
+  background-image: url("https://t3.ftcdn.net/jpg/03/68/27/72/240_F_368277269_kPLEgQkhDOJ9FMN6xp2DECu1OMd07umh.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.station-info h1 {
+  font-size: 4rem;
+  margin: 10px;
+}
+
+.station-info h2 {
+  margin: 10px;
+}
+
+.update-stationss {
+  width: 90%;
+  height: 700px;
+  box-sizing: border-box;
+  padding: 20px;
+  gap: 25px;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}

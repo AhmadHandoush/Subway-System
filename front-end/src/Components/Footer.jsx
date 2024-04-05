@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import "../styles/footer.css";
 
-function Footer() {
+function Footer({ hidden }) {
+  if (hidden) {
+    return;
+  }
   return (
     <footer className="footer">
       <div className="container">
@@ -10,13 +13,13 @@ function Footer() {
             <h3>Column 1</h3>
             <ul className="flex column">
               <li>
-                <Link>About us</Link>
+                <Link>About</Link>
               </li>
               <li>
-                <Link>About us</Link>
+                <Link>Contact us</Link>
               </li>
               <li>
-                <Link>About us</Link>
+                <Link>Services</Link>
               </li>
             </ul>
           </div>
@@ -24,13 +27,13 @@ function Footer() {
             <h3>Column 2</h3>
             <ul className="flex column">
               <li>
-                <Link>About us</Link>
+                <Link>Home</Link>
               </li>
               <li>
-                <Link>About us</Link>
+                <Link>Stations</Link>
               </li>
               <li>
-                <Link>About us</Link>
+                <Link>Rides</Link>
               </li>
             </ul>
           </div>
@@ -38,10 +41,10 @@ function Footer() {
             <h3>Column 3</h3>
             <ul className="flex column">
               <li>
-                <Link>About us</Link>
+                <Link>Email:example@gmail.com</Link>
               </li>
               <li>
-                <Link>About us</Link>
+                <Link>www.SubwaySystem.com</Link>
               </li>
               <li>
                 <Link>

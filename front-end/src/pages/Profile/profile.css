@@ -1,0 +1,250 @@
+:root {
+  --main-color: #0066b2;
+  --border-color: #ccc;
+  --bg-grey: #d3d3d3;
+  --bg-white: #ffffff;
+  --bg-hover: #f7f7f7;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background-color: var(--main-color);
+  color: var(--bg-white);
+}
+.t-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.t-center {
+  text-align: center;
+}
+.flex {
+  display: flex;
+}
+.flex-items {
+  display: flex;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.rounded {
+  border-radius: 6px;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+body {
+  font-family: sans-serif;
+}
+.column {
+  flex-direction: column;
+}
+.profile .container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.profile {
+  height: 100vh;
+  position: relative;
+}
+.imagess {
+  width: 100%;
+}
+.left {
+  width: 30%;
+  border: 1px solid var(--bg-grey);
+  padding: 10px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.user-image {
+  width: 40%px;
+  height: 40%px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: auto;
+}
+.user-image img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.user-details {
+  gap: 20px;
+}
+.email {
+  flex-wrap: wrap;
+}
+.username {
+  flex-wrap: wrap;
+}
+.user-info {
+  padding: 15px;
+  background-color: var(--bg-grey);
+  margin-top: 10px;
+}
+.edit {
+  padding: 10px;
+  background-color: #0066b2;
+  border: none;
+  outline: none;
+}
+.edit i {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--bg-white);
+  cursor: pointer;
+}
+
+.right {
+  border: 1px solid var(--bg-grey);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
+  width: 50%;
+  padding: 20px;
+}
+.right .taken {
+  margin-bottom: 40px;
+}
+.right .taken h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--main-color);
+}
+.right .user-rides {
+  gap: 20px;
+}
+.right .user-rides li {
+  background-color: white;
+  padding: 15px;
+}
+.user-rides .ride {
+  gap: 10px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--main-color);
+}
+.user-rides .stars {
+  gap: 8px;
+}
+.user-rides .stars i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.edit-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  z-index: 1000;
+  gap: 20px;
+}
+.edit-box form {
+  gap: 20px;
+}
+.edit-box form input {
+  border: 1px solid black;
+}
+.close {
+  justify-content: flex-end;
+}
+.btn_close {
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.edit-box form input {
+  padding: 10px;
+}
+.profile .overlay {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+.coins {
+  margin-top: 20px;
+}
+.coins form {
+  margin-top: 20px;
+  border: 1px solid var(--main-color);
+}
+
+.btn_request {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+.coins form input {
+  flex: 1;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border: 1px solid var(--bg-grey);
+}
+.left .send {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: fit-content;
+  font-size: 15px;
+}
+.success {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: var(--bg-grey);
+  z-index: 98788;
+}
+.success h3 {
+  color: rgba(0, 120, 0);
+}
+
+@media only screen and (max-width: 767px) {
+  .profile .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .profile .container .left {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .profile .right {
+    width: 100%;
+    display: block;
+  }
+}

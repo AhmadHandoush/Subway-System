@@ -2,13 +2,18 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import { useEffect } from "react";
 function Card({ station }) {
-  const { name, image, open_hour, close_hour, location } = station;
+  const { id, name, image, open_hour, close_hour, location } = station;
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
 
+
+  const handleClick = () => {
+    window.location.href = `/astation/${id}`;
+  };
+
   return (
-    <div className="card" data-aos="fade-down">
+    <div className="card" data-aos="fade-down" onClick={handleClick}>
       <div className="station-image">
         <img src={`/${image}`} alt="station" />
       </div>

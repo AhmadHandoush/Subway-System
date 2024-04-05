@@ -1,13 +1,13 @@
 .update-station {
   width: 90%;
-  height: 350px;
+  height: 328px;
   box-sizing: border-box;
   padding: 20px;
-  gap: 20px;
+  gap: 25px;
   margin-top: 20px;
   border-radius: 10px;
-  overflow:scroll;
-  
+  overflow: scroll;
+  margin-bottom: 20px;
 }
 
 .update-station input {
@@ -29,8 +29,8 @@
   border: none;
 }
 
-.update-station::-webkit-scrollbar{
-    display: none;
+.update-station::-webkit-scrollbar {
+  display: none;
 }
 
 .update-btn {
@@ -41,5 +41,5 @@
 }
 
 h1 {
-  margin-top: 20px;
+  margin: 10px;
 }

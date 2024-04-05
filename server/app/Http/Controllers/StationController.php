@@ -12,6 +12,17 @@ class StationController extends Controller
         $stations = Station::all();
         return response()->json($stations);
     }
+    public function get_station(Request $request)
+    {
+       $station = Station::where("id", $request->id)->first();
+       if (!$station) {
+        return response()->json(["message"=> ""],404);
+       }
+       return response()->json($station);
+       }
+
+
+
     public function get_active_stations()
     {
         $active_stations = Station::where('status', "Active")->get();

@@ -1,0 +1,12 @@
+.all-stations{
+    margin-bottom:30px;
+    gap: 30px;
+}
+
+.station-cards{
+    width: 90%;
+    gap: 20px;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding: 20px;
+}

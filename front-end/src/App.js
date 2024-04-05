@@ -11,6 +11,8 @@ import "./styles/colors.css";
 import Ride from "./pages/Manager/Ride";
 import Chat from "./pages/Manager/Chat";
 import Station from "./pages/Manager/Station";
+import AStation from "./pages/aStation"
+import AllRides from "./pages/allRides";
 import Admin from "./pages/Admin";
 import Branches from "./pages/Admin/Branches"
 import Dashboard from "./pages/Admin/Dashboard";
@@ -29,6 +31,9 @@ function App() {
             <Route path="/Manager/Chat" element={<Chat />} />
             <Route path="/Manager/Ride" element={<Ride />} />
           </Route>
+          
+          <Route path="/allrides" element={<AllRides />}></Route>
+          <Route path="/astation/:id" element={<AStation />}></Route>
           <Route path="/allStations" element={<All />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Station;
 use App\Models\Ride;
+use App\Models\Manager;
 
 class ManagerController extends Controller
 {
@@ -20,6 +21,21 @@ class ManagerController extends Controller
             'station' => $station,
         ], 200);
     }
+
+    public function get_manager(Request $req)
+    {
+        $manager = Manager::where('user_id', $req->user_id)->first();
+        
+        if (!$manager) {
+            return response()->json(['error' => 'No Manager'], 404);
+        }
+        return response()->json([
+            "message" => "Updated successfully",
+            'manager' => $manager,
+        ], 200);
+    }
+
+
 
     public function update_station_info(Request $req)
     {

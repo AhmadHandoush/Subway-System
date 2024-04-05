@@ -5,7 +5,7 @@ import React from "react";
 
 
 
-const ReviewCard=({username,reviewText,ratingChanged})=>{
+const ReviewCard=({username,reviewText,rating})=>{
 
 return (
     <div className='review-div flex column shadow '>
@@ -14,17 +14,8 @@ return (
                 {username}
             </h1>
             <div className='stars flex between'>
-            
-                <ReactStars
-                    count={5}
-                    onChange={ratingChanged}
-                    size={24}
-                    isHalf={true}
-                    emptyIcon={<i className="far fa-star"></i>}
-                    halfIcon={<i className="fa fa-star-half-alt"></i>}
-                    fullIcon={<i className="fa fa-star"></i>}
-                    activeColor="#E18C0D"
-                />
+            <p>{rating}</p>
+            <i className="fa fa-star"></i>
             </div>
         </div >
         <p className='txt-gray'>{reviewText}</p>
